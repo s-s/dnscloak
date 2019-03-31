@@ -1,0 +1,30 @@
+// Copyright (C) 2019 Sergey Smirnov
+//
+// This Source Code Form is subject to the terms of the Mozilla Public
+// License, v. 2.0. If a copy of the MPL was not distributed with this
+// file, You can obtain one at https://mozilla.org/MPL/2.0/.
+
+.ios .theme-dark .page,
+.page.ios .theme-dark {
+  background-color: #222426;
+}
+
+div.hidden,
+i.hidden,
+a.hidden,
+span.hidden,
+p.hidden,
+li.hidden {
+  display: none !important;
+}
+
+.page-hidden-nav .page-content {
+  padding-top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.list ul .list-with-input ul:before,
+.list ul .list-with-input ul:after {
+  display: block !important;
+}

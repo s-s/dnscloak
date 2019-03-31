@@ -1,0 +1,84 @@
+<!-- Copyright (C) 2019 Sergey Smirnov
+   -
+   - This Source Code Form is subject to the terms of the Mozilla Public
+   - License, v. 2.0. If a copy of the MPL was not distributed with this
+   - file, You can obtain one at https://mozilla.org/MPL/2.0/. -->
+
+<div class="list ">
+  <ul>
+    <li class="item-divider">IP version</li>
+    <li>
+      <label class="item-checkbox item-content" data-name="ipv4_servers">
+        <input type="checkbox" name="ipv4_servers">
+        <i class="icon icon-checkbox"></i>
+        <div class="item-inner">
+          <div class="item-title">Use IPv4 servers</div>
+        </div>
+      </label>
+    </li>
+
+    <li>
+      <label class="item-checkbox item-content" data-name="ipv6_servers">
+        <input type="checkbox" name="ipv6_servers">
+        <i class="icon icon-checkbox"></i>
+        <div class="item-inner">
+          <div class="item-title">Use IPv6 servers</div>
+        </div>
+      </label>
+    </li>
+
+    <li class="item-divider">Protocol</li>
+    <li>
+      <label class="item-checkbox item-content" data-name="dnscrypt_servers">
+        <input type="checkbox" name="dnscrypt_servers">
+        <i class="icon icon-checkbox"></i>
+        <div class="item-inner">
+          <div class="item-title">Use DNSCrypt</div>
+        </div>
+      </label>
+    </li>
+
+    <li>
+      <label class="item-checkbox item-content" data-name="doh_servers">
+        <input type="checkbox" name="doh_servers">
+        <i class="icon icon-checkbox"></i>
+        <div class="item-inner">
+          <div class="item-title">Use DNS-over-HTTP/2 (DoH)</div>
+        </div>
+      </label>
+    </li>
+
+    <li class="item-divider">Required properties</li>
+    <li>
+      <label class="item-checkbox item-content" data-name="require_dnssec">
+        <input type="checkbox" name="require_dnssec">
+        <i class="icon icon-checkbox"></i>
+        <div class="item-inner">
+          <div class="item-title">Should provide DNSSEC</div>
+        </div>
+      </label>
+    </li>
+
+    <li>
+      <label class="item-checkbox item-content" data-name="require_nolog">
+        <input type="checkbox" name="require_nolog">
+        <i class="icon icon-checkbox"></i>
+        <div class="item-inner">
+          <div class="item-title">Should not log</div>
+        </div>
+      </label>
+    </li>
+
+    <li>
+      <label class="item-checkbox item-content" data-name="require_nofilter">
+        <input type="checkbox" name="require_nofilter">
+        <i class="icon icon-checkbox"></i>
+        <div class="item-inner">
+          <div class="item-title">Should not filter</div>
+        </div>
+      </label>
+    </li>
+  </ul>
+  <div class="block-footer dashboard-comment" data-i18n="comment-servers-filter">App will use
+    only resolvers that meet above conditions.</div>
+</div>

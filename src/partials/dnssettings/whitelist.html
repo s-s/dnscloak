@@ -1,0 +1,72 @@
+<!-- Copyright (C) 2019 Sergey Smirnov
+   -
+   - This Source Code Form is subject to the terms of the Mozilla Public
+   - License, v. 2.0. If a copy of the MPL was not distributed with this
+   - file, You can obtain one at https://mozilla.org/MPL/2.0/. -->
+
+<div class="list">
+  <ul>
+    <li>
+      <div class="item-content">
+        <div class="item-media">
+          <i class="icon ion ion-checkmark-circled"></i>
+        </div>
+        <div class="item-inner">
+          <div class="item-title item-label" style="width: auto;" data-i18n="white-dashboard">Enable
+            Whitelist</div>
+          <div class="item-input" style="width: auto;">
+            <label class="toggle toggle-init color-yellow" data-name="enableWhitelist" data-colorable="yes" style="float: right;">
+              <input type="checkbox" name="enableWhitelist" />
+              <span class="toggle-icon"></span>
+            </label>
+          </div>
+        </div>
+      </div>
+    </li>
+
+    <li>
+      <a href="#" class="item-link item-content pick-whitelist">
+        <div class="item-media">
+          <i class="icon ion ion-folder"></i>
+        </div>
+        <div class="item-inner">
+          <div class="item-title" data-i18n="pick-whitelist">Pick Whitelist file...</div>
+        </div>
+      </a>
+    </li>
+
+    <li>
+      <div class="item-content">
+        <div class="item-media">
+          <i class="icon ion ion-toggle-filled"></i>
+        </div>
+        <div class="item-inner">
+          <div class="item-title item-label" style="width: auto;" data-i18n="white-log-dashboard">Enable
+            Whitelist log</div>
+          <div class="item-input" style="width: auto;">
+            <label class="toggle toggle-init color-yellow" data-name="enableWhitelistLog" data-colorable="yes" style="float: right;">
+              <input type="checkbox" name="enableWhitelistLog" />
+              <span class="toggle-icon"></span>
+            </label>
+          </div>
+        </div>
+      </div>
+    </li>
+
+    <li class="dns-log">
+      <a href="#" class="item-link item-content whitelist-log">
+        <div class="item-media">
+          <i class="icon ion ion-clipboard"></i>
+        </div>
+        <div class="item-inner">
+          <div class="item-title" data-i18n="dns-log">Open Whitelist log</div>
+        </div>
+      </a>
+    </li>
+  </ul>
+  <div class="block-footer dashboard-comment" data-i18n="comment-whitelist">
+    <p>Whitelist domain names by patterns. If a name matches a whitelist entry, the corresponding
+      session will bypass names
+      and IP filters. Whitelists support the same patterns as blacklists.</p>
+  </div>
+</div>

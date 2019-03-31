@@ -1,0 +1,53 @@
+// Copyright (C) 2019 Sergey Smirnov
+//
+// This Source Code Form is subject to the terms of the Mozilla Public
+// License, v. 2.0. If a copy of the MPL was not distributed with this
+// file, You can obtain one at https://mozilla.org/MPL/2.0/.
+
+div.about-data {
+  width: 100%;
+  font-weight: 300;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+
+  -webkit-flex-direction: column;
+  flex-direction: column;
+
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  text-align: center;
+}
+
+.about-data-block {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.about-data-text {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.about-data-image {
+  width: 410px;
+  height: 410px;
+  background-size: 410px;
+  background-image: url("./../images/logo.png");
+}
+
+
+@media all and (max-width: 480px) {
+  .about-data-image {
+    width: 205px;
+    height: 205px;
+    background-size: 205px;
+  }
+}

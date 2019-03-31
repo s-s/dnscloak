@@ -1,0 +1,51 @@
+stages:
+# - install
+  - script
+  - cleanup
+
+test:
+  stage: script
+  variables:
+    NODE_ENV: 'development'
+  script:
+    - xcrun simctl list
+    - instruments -s devices
+    - export PATH=$(pwd)/node_modules/.bin:${PATH}
+    - export NODE_PATH=$(pwd)/node_modules:$(pwd)/node_modules/cordova/node_modules:$NODE_PATH
+    - (if [ ! -d node_modules ] ; then npm install ; fi)
+    - (if [ -d app-preferences-app ] ; then rm -rf app-preferences-app ; fi)
+    - cordova create app-preferences-app
+    - echo running jasmine test
+    - cd bin
+    - pwd
+    - jasmine
+    - cd ..
+    # let's create cordova app, add and remove plugin a few times
+    - echo test plugin within cordova app
+    - cd app-preferences-app
+    - cordova platform add ios android
+    - cordova plugin add cordova-plugin-device
+    - cordova plugin add https://github.com/apla/me.apla.cordova.app-preferences
+    - (if [ ! -f app-settings.json ]; then exit 0; fi)
+    - cp plugins/cordova-plugin-app-preferences/src/test.js www/js/apppreferences-test.js
+    - patch -p0 -i plugins/cordova-plugin-app-preferences/src/test.patch
+    - cordova prepare
+    - echo plugin must be ok without platforms installed
+    - cordova platform rm android
+    - cordova prepare
+    - cordova platform rm ios
+    - cordova -d platform add android
+    - echo patch cordova android emulator
+    - (patch -p0 -i ../src/platform-android-emulator.patch || exit 0)
+    - echo check for UIWebView
+    - cordova platform add ios
+    - cordova prepare
+    - (cordova build --emulator ios > /dev/null)
+    - node ../bin/test-server.js ios
+    - (android list avd && cordova build --emulator android > /dev/null || exit 0)
+    - (android list avd && node ../bin/test-server.js android circleci-android22 || exit 0)
+
+cleanup:
+  stage: cleanup
+  script:
+    - echo ok

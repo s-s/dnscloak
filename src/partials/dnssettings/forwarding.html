@@ -1,0 +1,44 @@
+<!-- Copyright (C) 2019 Sergey Smirnov
+   -
+   - This Source Code Form is subject to the terms of the Mozilla Public
+   - License, v. 2.0. If a copy of the MPL was not distributed with this
+   - file, You can obtain one at https://mozilla.org/MPL/2.0/. -->
+
+<div class="list">
+  <ul>
+    <li>
+      <div class="item-content">
+        <div class="item-media">
+          <i class="icon ion ion-shuffle"></i>
+        </div>
+        <div class="item-inner">
+          <div class="item-title item-label" style="width: auto;" data-i18n="forward-dashboard">Enable
+            Forwarding</div>
+          <div class="item-input" style="width: auto;">
+            <label class="toggle toggle-init color-yellow" data-name="forwarding_rules" data-colorable="yes" style="float: right;">
+              <input type="checkbox" name="forwarding_rules" />
+              <span class="toggle-icon"></span>
+            </label>
+          </div>
+        </div>
+      </div>
+    </li>
+
+    <li>
+      <a href="#" class="item-link item-content pick-forward">
+        <div class="item-media">
+          <i class="icon ion ion-folder"></i>
+        </div>
+        <div class="item-inner">
+          <div class="item-title" data-i18n="pick-forward">Pick rules file...</div>
+        </div>
+      </a>
+    </li>
+  </ul>
+  <div class="block-footer dashboard-comment" data-i18n="comment-forward">
+    <p>Route queries for specific domains to a dedicated set of servers. Example map entries (one
+      entry per line):</p>
+    <p>example.com 9.9.9.9</p>
+    <p>example.net 9.9.9.9,8.8.8.8</p>
+  </div>
+</div>

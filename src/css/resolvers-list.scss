@@ -1,0 +1,45 @@
+// Copyright (C) 2019 Sergey Smirnov
+//
+// This Source Code Form is subject to the terms of the Mozilla Public
+// License, v. 2.0. If a copy of the MPL was not distributed with this
+// file, You can obtain one at https://mozilla.org/MPL/2.0/.
+
+.ios .theme-dark .searchbar input[type="search"],
+.searchbar.ios .theme-dark input[type="search"],
+.ios .theme-dark .searchbar input[type="text"],
+.searchbar.ios .theme-dark input[type="text"] {
+  background-color: #222426;
+  color: #fff;
+}
+
+.ios .theme-dark .searchbar,
+.searchbar.ios .theme-dark {
+  background-color: #1b1b1b;
+}
+
+.dns-selected {
+  background: rgba(255, 204, 0, 0.3);
+}
+
+a.dns-use {
+  margin-bottom: 15px;
+}
+
+.theme-dark .list.dnslist-list ul,
+.list.theme-dark.dnslist-list ul {
+  background-color: #222426;
+}
+
+.ios .list.dnslist-list {
+  margin: 0;
+}
+
+.theme-dark .list.dnslist-list ul:before,
+.list.dnslist-list.theme-dark ul:before {
+  display: none;
+}
+
+.theme-dark .list.dnslist-list ul:after,
+.list.dnslist-list.theme-dark ul:after {
+  display: none;
+}

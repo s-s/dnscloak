@@ -1,0 +1,37 @@
+// Copyright (C) 2019 Sergey Smirnov
+//
+// This Source Code Form is subject to the terms of the Mozilla Public
+// License, v. 2.0. If a copy of the MPL was not distributed with this
+// file, You can obtain one at https://mozilla.org/MPL/2.0/.
+
+.ios .list li:not(.accordion-item-opened) .item-text {
+  height: 42px;
+}
+
+.ios .list li.accordion-item-opened .item-text {
+  min-height: 42px;
+  max-height: 105px;
+  -webkit-line-clamp: 5;
+}
+
+.ios .accordion-item-content .list+.list {
+  margin-top: 15px;
+}
+
+.ios .accordion-item-content .list:last-child {
+  margin-bottom: 15px;
+}
+
+.ios .accordion-item-content .block-footer {
+  margin-top: 0px;
+}
+
+.ios form.main-form li.accordion-item>a .item-title,
+.ios div.faq-page li.accordion-item>a .item-title {
+  font-weight: 600;
+  font-size: 20px;
+}
+
+.ios form.main-form div.accordion-item-content .item-media .icon {
+  color: #fff;
+}

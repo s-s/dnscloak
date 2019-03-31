@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
+        id="cordova-plugin-filepicker"
+        version="1.1.5">
+
+  <name>File Picker</name>
+  <author>jcesarmobile</author>
+
+  <description>
+    This plugin makes possible to pick files from iCloud or other document providers
+  </description>
+
+  <license>MIT</license>
+
+  <js-module src="www/FilePicker.js" name="FilePicker">
+    <clobbers target="FilePicker"/>
+  </js-module>
+
+  <engines>
+    <engine name="cordova" version="&gt;=3.0.0"/>
+  </engines>
+
+  <platform name="ios">
+    <config-file target="config.xml" parent="/*">
+      <feature name="FilePicker">
+        <param name="ios-package" value="FilePicker"/>
+      </feature>
+    </config-file>
+
+    <header-file src="src/ios/FilePicker.h"/>
+    <source-file src="src/ios/FilePicker.m"/>
+
+    <hook type="after_plugin_install" src="src/ios/hooks/install_entitlements.js"/>
+  </platform>
+</plugin>

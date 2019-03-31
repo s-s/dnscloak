@@ -1,0 +1,31 @@
+// Copyright (C) 2019 Sergey Smirnov
+//
+// This Source Code Form is subject to the terms of the Mozilla Public
+// License, v. 2.0. If a copy of the MPL was not distributed with this
+// file, You can obtain one at https://mozilla.org/MPL/2.0/.
+
+i.ion.icon {
+  font-size: 24px;
+}
+
+.ion.icon.ion-small {
+  font-size: 17px;
+  vertical-align: baseline;
+}
+
+.ion.icon-only {
+  margin-left: 10px;
+  margin-right: 10px;
+
+  padding: 0 6px;
+  height: 24px;
+  line-height: 24px;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.actions-modal-button .ion.icon {
+  font-size: 44px;
+  margin-top: 5px;
+  margin-left: 15px;
+}

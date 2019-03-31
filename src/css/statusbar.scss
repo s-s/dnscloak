@@ -1,0 +1,27 @@
+// Copyright (C) 2019 Sergey Smirnov
+//
+// This Source Code Form is subject to the terms of the Mozilla Public
+// License, v. 2.0. If a copy of the MPL was not distributed with this
+// file, You can obtain one at https://mozilla.org/MPL/2.0/.
+
+body.theme-dark .statusbar {
+  background-color: #1b1b1b;
+}
+
+@media (min-height: 734px) and (width: 375px) {
+  div.statusbar {
+    height: constant(safe-area-inset-top);
+    height: env(safe-area-inset-top);
+  }
+
+  html.with-statusbar .framework7-root {
+    padding-top: constant(safe-area-inset-top);
+    padding-top: env(safe-area-inset-top);
+  }
+
+  html.with-statusbar .popup {
+    top: constant(safe-area-inset-top);
+    top: env(safe-area-inset-top);
+  }
+}
+

@@ -1,0 +1,74 @@
+<!-- Copyright (C) 2019 Sergey Smirnov
+   -
+   - This Source Code Form is subject to the terms of the Mozilla Public
+   - License, v. 2.0. If a copy of the MPL was not distributed with this
+   - file, You can obtain one at https://mozilla.org/MPL/2.0/. -->
+
+<div class="list">
+  <ul>
+    <li>
+      <div class="item-content">
+        <div class="item-media">
+          <i class="icon ion ion-close-circled"></i>
+        </div>
+        <div class="item-inner">
+          <div class="item-title item-label" style="width: auto;" data-i18n="ip-block-dashboard">Enable
+            IP Blacklist</div>
+          <div class="item-input" style="width: auto;">
+            <label class="toggle toggle-init color-yellow" data-name="enableIPBlacklist" data-colorable="yes" style="float: right;">
+              <input type="checkbox" name="enableIPBlacklist" />
+              <span class="toggle-icon"></span>
+            </label>
+          </div>
+        </div>
+      </div>
+    </li>
+
+    <li>
+      <a href="#" class="item-link item-content pick-ipblacklist">
+        <div class="item-media">
+          <i class="icon ion ion-folder"></i>
+        </div>
+        <div class="item-inner">
+          <div class="item-title" data-i18n="pick-ipblacklist">Pick IP Blacklist file...</div>
+        </div>
+      </a>
+    </li>
+
+    <li>
+      <div class="item-content">
+        <div class="item-media">
+          <i class="icon ion ion-toggle-filled"></i>
+        </div>
+        <div class="item-inner">
+          <div class="item-title item-label" style="width: auto;" data-i18n="ip-block-log-dashboard">Enable
+            IP Blacklist log</div>
+          <div class="item-input" style="width: auto;">
+            <label class="toggle toggle-init color-yellow" data-name="enableIPBlacklistLog" data-colorable="yes" style="float: right;">
+              <input type="checkbox" name="enableIPBlacklistLog" />
+              <span class="toggle-icon"></span>
+            </label>
+          </div>
+        </div>
+      </div>
+    </li>
+
+    <li class="dns-log">
+      <a href="#" class="item-link item-content ipblacklist-log">
+        <div class="item-media">
+          <i class="icon ion ion-clipboard"></i>
+        </div>
+        <div class="item-inner">
+          <div class="item-title" data-i18n="dns-log">Open IP Blacklist log</div>
+        </div>
+      </a>
+    </li>
+  </ul>
+  <div class="block-footer dashboard-comment" data-i18n="comment-ipblacklist">
+    <p>Pattern-based IP blocking (IP blacklists). IP blacklists are made of one pattern per line.
+      Example of valid patterns:</p>
+    <p>127.*</p>
+    <p>fe80:abcd:*</p>
+    <p>192.168.1.4</p>
+  </div>
+</div>

@@ -1,0 +1,62 @@
+<!-- Copyright (C) 2019 Sergey Smirnov
+   -
+   - This Source Code Form is subject to the terms of the Mozilla Public
+   - License, v. 2.0. If a copy of the MPL was not distributed with this
+   - file, You can obtain one at https://mozilla.org/MPL/2.0/. -->
+
+<div data-name="index" class="page with-subnavbar">
+  <div class="navbar">
+    <div class="navbar-inner">
+      <div class="left sliding">
+        <a href="/dnssettings/" class="link icon-only"><i class="icon ion ion-navicon-round"></i></a>
+        <a href="#" class="link dns-control-button icon-only"><i class="icon ion ion-play"></i></a>
+      </div>
+
+      <div class="title sliding">DNSCloak</div>
+
+      <div class="right">
+        <a href="/editor/" class="link icon-only"><i class="icon ion ion-compose"></i></a>
+        <a href="/settings/" class="link icon-only"> <i class="icon ion ion-more"></i></a>
+      </div>
+
+      <div class="subnavbar">
+        <form data-search-container=".virtual-list.dnslist-list" class="dnslist-search searchbar searchbar-init">
+          <div class="searchbar-inner">
+            <a href="#" class="link only-selected color-gray icon-only hidden"><i class="icon ion ion-bookmark"></i></a>
+            <div class="searchbar-input-wrap">
+              <input type="search" placeholder="Search">
+              <i class="searchbar-icon"></i>
+              <span class="input-clear-button"></span>
+            </div>
+            <span class="searchbar-disable-button">Cancel</span>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="searchbar-backdrop"></div>
+  <div class="page-content hide-bars-on-scroll ptr-content">
+    <div class="ptr-preloader">
+      <div class="preloader"></div>
+      <div class="ptr-arrow"></div>
+    </div>
+
+    <div class="list media-list dnslist-list accordion-list virtual-list searchbar-found tablet-inset"></div>
+    <div class="list searchbar-not-found tablet-inset">
+      <ul>
+        <li class="item-content">
+          <div class="item-inner">
+            <div class="item-title" data-i18n="nothing-found">Nothing found</div>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="dns-list-loading">
+      <div class="block">
+        <h3>Resolvers list is loading...</h3>
+      </div>
+    </div>
+  </div>
+</div>

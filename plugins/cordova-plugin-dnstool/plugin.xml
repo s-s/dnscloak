@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='utf-8'?>
+
+<plugin
+  xmlns="http://apache.org/cordova/ns/plugins/1.0"
+  id="cordova-plugin-dnstool"
+  version="0.0.1">
+  <name>DNSCloak helper plugin</name>
+  <description>Cordova NEVPNManager API</description>
+  <author>Sergey Smirnov</author>
+  <license>MIT</license>
+  <keywords>cordova,networkextension</keywords>
+
+  <js-module src="www/CordovaDnstool.js" name="CordovaDnstool">
+    <clobbers target="dnstool" />
+  </js-module>
+
+  <!-- ios -->
+  <platform name="ios">
+    <config-file target="config.xml" parent="/*">
+      <feature name="CordovaDnstool">
+        <param name="ios-package" value="CordovaDnstool"/>
+      </feature>
+    </config-file>
+
+    <header-file src="src/ios/NetTester.h" />
+    <source-file src="src/ios/NetTester.m" />
+    <source-file src="src/ios/CordovaDnstool.swift" />
+  </platform>
+
+</plugin>

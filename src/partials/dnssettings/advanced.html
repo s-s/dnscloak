@@ -1,0 +1,236 @@
+<!-- Copyright (C) 2019 Sergey Smirnov
+   -
+   - This Source Code Form is subject to the terms of the Mozilla Public
+   - License, v. 2.0. If a copy of the MPL was not distributed with this
+   - file, You can obtain one at https://mozilla.org/MPL/2.0/. -->
+
+<div class="list">
+  <ul>
+    <li>
+      <div class="item-content">
+        <div class="item-media">
+          <i class="icon ion ion-wifi"></i>
+        </div>
+        <div class="item-inner">
+          <div class="item-title item-label" style="width: auto;" data-i18n="skip-wait-resolvers-dashboard">Skip
+            accessibility check</div>
+          <div class="item-input" style="width: auto;">
+            <label class="toggle toggle-init color-yellow" data-name="skipWaitResolvers" data-colorable="yes" style="float: right;">
+              <input type="checkbox" name="skipWaitResolvers" />
+              <span class="toggle-icon"></span>
+            </label>
+          </div>
+        </div>
+      </div>
+    </li>
+  </ul>
+  <div class="block-footer dashboard-comment" data-i18n="comment-skip-wait-resolvers">Do not wait
+    for resolvers accessibility during profile launch. May help in some captive networks that
+    block initial outgoing connections thus causing the app to stuck.</div>
+</div>
+
+<div class="list">
+  <ul>
+    <li>
+      <div class="item-content">
+        <div class="item-media">
+          <i class="icon ion ion-battery-charging"></i>
+        </div>
+        <div class="item-inner">
+          <div class="item-title item-label" style="width: auto;" data-i18n="disconnect-on-sleep-dashboard">Disconnect
+            on sleep</div>
+          <div class="item-input" style="width: auto;">
+            <label class="toggle toggle-init color-yellow" data-name="disconnectOnSleep" data-colorable="yes" style="float: right;">
+              <input type="checkbox" name="disconnectOnSleep" />
+              <span class="toggle-icon"></span>
+            </label>
+          </div>
+        </div>
+      </div>
+    </li>
+  </ul>
+  <div class="block-footer dashboard-comment" data-i18n="comment-disconnect-on-sleep">Disconnect
+    app's profile while device sleeps.
+    May preserve some battery life.
+    Recommended to use with "Connect On Demand" enabled.
+    DO NOT USE if you are locking your device often to avoid profile launch pauses.</div>
+</div>
+
+<div class="list">
+  <ul>
+    <li>
+      <div class="item-content">
+        <div class="item-media">
+          <i class="icon ion ion-medkit"></i>
+        </div>
+        <div class="item-inner">
+          <div class="item-title item-label" style="width: auto;" data-i18n="cache-dashboard">Strict
+            mode</div>
+          <div class="item-input" style="width: auto;">
+            <label class="toggle toggle-init color-yellow" data-name="ios_mode" data-colorable="yes" style="float: right;">
+              <input type="checkbox" name="ios_mode" />
+              <span class="toggle-icon"></span>
+            </label>
+          </div>
+        </div>
+      </div>
+    </li>
+  </ul>
+  <div class="block-footer dashboard-comment" data-i18n="comment-strict">Override iOS behavior to
+    fallback to a default system resolver on failed and refused answers. With this option enabled
+    iOS will fully rely on selected resolvers, thus helping to prevent traffic leaks.</div>
+</div>
+
+<div class="block-title" data-i18n="ssid-exclusions">WiFi exceptions</div>
+<div class="list list-with-input">
+  <ul>
+    <li class="item-content item-input item-input-with-info">
+      <div class="item-inner">
+        <div class="item-input-wrap">
+          <textarea name="ssidExclusions" placeholder="Enter SSIDs..." data-i18n-placeholder="enter-ssids"></textarea>
+        </div>
+      </div>
+    </li>
+  </ul>
+  <div class="block-footer dashboard-comment" data-i18n="comment-ssid-exclusions">Disconnect
+    app's profile while device connected to specified WiFi networks. Requires "Connect On Demand"
+    option enabled. Enter SSIDs separated by comma or semicolon.</div>
+</div>
+
+<div class="list  list-with-input">
+  <ul>
+    <li class="item-content item-input">
+      <div class="item-media">
+        <i class="icon ion ion-connection-bars"></i>
+      </div>
+      <div class="item-inner">
+        <div class="item-input-wrap">
+          <select name="netType">
+            <option value="">Autodetect connectivity</option>
+            <option value="1">IPv4 &amp; IPv6</option>
+            <option value="2">IPv4-only</option>
+            <option value="3">IPv6-only</option>
+          </select>
+        </div>
+      </div>
+    </li>
+  </ul>
+  <div class="block-footer">
+    <p data-i18n="connectivity-comment">Specify your network connectivity to setup iOS properly.
+      May be useful when you are connected via IPv6-only network. The
+      "IPv4-only" option will fit in most cases. When the "Autodetect" option selected app will
+      try to detect this settings
+      based on available network interfaces.</p>
+    <p>
+      <span data-i18n="connectivity-status-comment">Current connectivity:</span>
+      <span class="connectivity-status"></span>
+      <span><a class="refresh-connectivity"><i class="icon ion ion-refresh"></i></a></span>
+    </p>
+  </div>
+</div>
+
+<div class="list">
+  <ul>
+    <li>
+      <div class="item-content">
+        <div class="item-media">
+          <i class="icon ion ion-arrow-return-left"></i>
+        </div>
+        <div class="item-inner">
+          <div class="item-title item-label" style="width: auto;" data-i18n="block-ipv6-dashboard">Block
+            IPv6</div>
+          <div class="item-input" style="width: auto;">
+            <label class="toggle toggle-init color-yellow" data-name="block_ipv6" data-colorable="yes" style="float: right;">
+              <input type="checkbox" name="block_ipv6" />
+              <span class="toggle-icon"></span>
+            </label>
+          </div>
+        </div>
+      </div>
+    </li>
+  </ul>
+  <div class="block-footer dashboard-comment" data-i18n="comment-block-ipv6">Immediately respond
+    to IPv6-related queries with an empty response. This makes things faster when there is no
+    IPv6 connectivity,
+    but can also cause reliability issues with some stub resolvers.</div>
+</div>
+
+<div class="list">
+  <ul>
+    <li>
+      <div class="item-content">
+        <div class="item-media">
+          <i class="icon ion ion-unlocked"></i>
+        </div>
+        <div class="item-inner">
+          <div class="item-title item-label" style="width: auto;" data-i18n="tcp-only-dashboard">TCP
+            Only</div>
+          <div class="item-input" style="width: auto;">
+            <label class="toggle toggle-init color-yellow" data-name="force_tcp" data-colorable="yes" style="float: right;">
+              <input type="checkbox" name="force_tcp" />
+              <span class="toggle-icon"></span>
+            </label>
+          </div>
+        </div>
+      </div>
+    </li>
+  </ul>
+  <div class="block-footer dashboard-comment" data-i18n="comment-tcp-only">Do not send queries
+    using UDP. Only use TCP. Even if some resolvers mitigate this, DNS over TCP is almost always
+    slower than UDP and doesn't offer additional security. Only enable this option if UDP doesn't
+    work
+    on your network. Also may be useful if your traffic is routed through a TCP-only tunnel such
+    as Tor.</div>
+</div>
+
+<div class="list">
+  <ul>
+    <li>
+      <div class="item-content">
+        <div class="item-media">
+          <i class="icon ion ion-loop"></i>
+        </div>
+        <div class="item-inner">
+          <div class="item-title item-label" style="width: auto;" data-i18n="ephemeral-keys-dashboard">Ephemeral
+            keys</div>
+          <div class="item-input" style="width: auto;">
+            <label class="toggle toggle-init color-yellow" data-name="dnscrypt_ephemeral_keys" data-colorable="yes"
+              style="float: right;">
+              <input type="checkbox" name="dnscrypt_ephemeral_keys" />
+              <span class="toggle-icon"></span>
+            </label>
+          </div>
+        </div>
+      </div>
+    </li>
+  </ul>
+  <div class="block-footer dashboard-comment" data-i18n="comment-ephemeral-keys">DNSCrypt: Create
+    a new, unique key for every single DNS query. This may improve privacy but can also have a
+    significant
+    impact on CPU usage. Only enable if you don't have a lot of network load.</div>
+</div>
+
+<div class="list">
+  <ul>
+    <li>
+      <div class="item-content">
+        <div class="item-media">
+          <i class="icon ion ion-pricetag"></i>
+        </div>
+        <div class="item-inner">
+          <div class="item-title item-label" style="width: auto;" data-i18n="tls-no-tickets-dashboard">Disable
+            TLS session tickets</div>
+          <div class="item-input" style="width: auto;">
+            <label class="toggle toggle-init color-yellow" data-name="tls_disable_session_tickets" data-colorable="yes"
+              style="float: right;">
+              <input type="checkbox" name="tls_disable_session_tickets" />
+              <span class="toggle-icon"></span>
+            </label>
+          </div>
+        </div>
+      </div>
+    </li>
+  </ul>
+  <div class="block-footer dashboard-comment" data-i18n="comment-tls-no-tickets">DoH: Disable TLS
+    session tickets - increases privacy but also latency.</div>
+</div>

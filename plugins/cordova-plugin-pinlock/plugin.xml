@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='utf-8'?>
+
+<plugin
+  xmlns="http://apache.org/cordova/ns/plugins/1.0"
+  id="cordova-plugin-pinlock"
+  version="0.0.1">
+  <name>pinlock</name>
+  <description>Cordova PIN lock Extension Plugin</description>
+  <author>Sergey Smirnov</author>
+  <license>MIT</license>
+  <keywords>cordova,pinlock</keywords>
+
+  <js-module src="www/CordovaPinlock.js" name="CordovaPinlock">
+    <clobbers target="pinlock" />
+  </js-module>
+
+  <!-- ios -->
+  <platform name="ios">
+    <config-file target="config.xml" parent="/*">
+      <feature name="CordovaPinlock">
+        <param name="ios-package" value="CordovaPinlock"/>
+      </feature>
+    </config-file>
+
+    <source-file src="src/ios/CordovaPinlock.swift" />
+
+    <header-file src="src/ios/LockScreenViewController/JKLLockScreenNumber.h" />
+    <header-file src="src/ios/LockScreenViewController/JKLLockScreenPincodeView.h" />
+    <header-file src="src/ios/LockScreenViewController/JKLLockScreenViewController.h" />
+
+    <source-file src="src/ios/LockScreenViewController/JKLLockScreenNumber.m" />
+    <source-file src="src/ios/LockScreenViewController/JKLLockScreenPincodeView.m" />
+    <source-file src="src/ios/LockScreenViewController/JKLLockScreenViewController.m" />
+
+    
+    <resource-file src="src/ios/LockScreenViewController/JKLLockScreenViewController.xib" />
+    <resource-file src="src/ios/LockScreenViewController/LockScreen.strings" />
+  </platform>
+
+</plugin>

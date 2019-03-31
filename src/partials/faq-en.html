@@ -1,0 +1,196 @@
+<!-- Copyright (C) 2019 Sergey Smirnov
+   - 
+   - This Source Code Form is subject to the terms of the Mozilla Public
+   - License, v. 2.0. If a copy of the MPL was not distributed with this
+   - file, You can obtain one at https://mozilla.org/MPL/2.0/. -->
+
+<div class="page faq-page      stacked theme-yelow" data-name="faq-en">
+  <div class="navbar">
+    <div class="navbar-inner ">
+      <div class="left sliding">
+        <a href="#" class="back link icon-only">
+          <i class="icon icon-back"></i>
+        </a>
+      </div>
+      <div class="title sliding" data-i18n="faq">FAQ &amp; Help</div>
+    </div>
+  </div>
+
+  <div class="page-content hide-bars-on-scroll">
+    <div class="list accordion-list  tablet-inset">
+      <ul>
+        <li class="accordion-item">
+          <a href="" class="item-link item-content">
+            <div class="item-inner">
+              <div class="item-title">General questions</div>
+            </div>
+          </a>
+          <div class="accordion-item-content">
+            <div class="block">
+              <h3>What is DNSCrypt?</h3>
+              <p>DNSCrypt is a protocol that authenticates communications between a DNS client and a DNS resolver. It
+                prevents
+                DNS spoofing. It uses cryptographic signatures to verify that responses originate from the chosen DNS
+                resolver
+                and haven’t been tampered with.
+              </p>
+
+              <h3>
+                What is DNS-over-HTTPS (DoH)?</h3>
+              <p>DNS-over-HTTPS (DoH) is an experimental protocol for performing DNS resolution via the HTTPS protocol.
+                The
+                goal of the method is to increase user privacy and security by preventing eavesdropping and
+                manipulation
+                of DNS data by man-in-the-middle attacks. Another goal of DoH is to improve performance.
+              </p>
+
+              <h3>How the app works?</h3>
+              <p>The app runs a local resolver (dnscrypt-proxy v2) in the background that performs DNS resolutions via
+                DNSCrypt
+                and/or DoH protocols via a user-selected set of resolvers. The app uses a VPN profile to setup the
+                whole
+                system to use local resolver.</p>
+
+              <h3>How to use the app?</h3>
+              <p>Select your preferred resolver(s) and tap start button. First time you will be asked for permission to
+                install
+                VPN profile. After profile install the app will launch a local resolver and setup iOS to use it as a
+                system-wide
+                DNS resolver. You may also enable "Connect On Demand" feature to keep the app running and automatically
+                restarting.</p>
+            </div>
+          </div>
+        </li>
+
+        <li class="accordion-item">
+          <a href="" class="item-link item-content">
+            <div class="item-inner">
+              <div class="item-title">Compatibility questions</div>
+            </div>
+          </a>
+          <div class="accordion-item-content">
+            <div class="block">
+              <h3>Is the app compatible with VPN apps?</h3>
+              <p>Preamble: all network configurations on the iOS are made using "VPN profiles". There are two main
+                profile types:
+                "enterprise" (listed as "VPN Configurations" in Settings -&gt; VPN, top of the form) and "personal"
+                (listed
+                as "Personal VPN" in Settings -&gt; VPN, bottom of the form). iOS allows only a single profile per type
+                to
+                be active. Enterprise profile superseeds personal profile. Our app is made as a special subtype of
+                enterprise
+                profile. ANSWER: So, if other app's profile is listed as "Personal VPN" one - it is probably
+                compatible,
+                if it is listed in "VPN Configurations" section (DNSCloak's profile listed there) - it is not
+                compatible.</p>
+
+              <h3>Is the app compatible with iOS Personal Hotspot mode?</h3>
+              <p>No. Personal Hotspot launches a local resolver thus causing a port conflict with the app.</p>
+            </div>
+          </div>
+        </li>
+
+        <li class="accordion-item">
+          <a href="" class="item-link item-content">
+            <div class="item-inner">
+              <div class="item-title">Resolvers questions</div>
+            </div>
+          </a>
+          <div class="accordion-item-content">
+            <div class="block">
+              <h3>Does the app support multiple resolvers usage?</h3>
+              <p>Yes, you can select specific resolvers (or keep your selection empty to use the whole list).
+              </p>
+
+              <h3>How to determine fastest resolver(s)?</h3>
+              <p>App will check RTT for each resolver and will pick candidate based on configurable load balancing
+                strategy.
+                Default strategy is to pick candidate randomly from top two fastest. Other strategies are descibed
+                <a class="external" href="https://github.com/jedisct1/dnscrypt-proxy/wiki/Load-Balancing-Options">here</a>.
+                Also, you can enable and view service log - app will print RTT for each used resolver. You can
+                use this infromation to adjust the selection.
+              </p>
+
+              <h3>I have selected a resolver provided by famous company, run a synthetic DNS leak test, but it displays
+                my ISP's
+                resolver. Why?
+              </h3>
+              <p>This is a known situation due to mix of edge cases:
+                <ol>
+                  <li>Synthetic DNS leak tests launch large number (hundreds) of simultaneous randomized uncached
+                    requests;</li>
+                  <li>Resolvers of large companies do rate limiting, thus failing that requests;</li>
+                  <li>iOS catches that failed responses and fallbacks to system resolver - your ISP's resolver.</li>
+                </ol>
+              </p>
+
+              <h3>I have IPv4-only connectivity on my home/work WiFi and IPv6-only connectivity on my carrier's
+                network. How
+                to setup your app?
+              </h3>
+              <p>DNSCloak allows the use of multiple resolvers and checks your connectivity type on network changes.
+                So, you
+                can select both IPv4 and IPv6 resolvers (IPv6 resolvers have "-ipv6" suffix in their names) and the app
+                will switch them automatically.</p>
+            </div>
+          </div>
+        </li>
+
+        <li class="accordion-item">
+          <a href="" class="item-link item-content">
+            <div class="item-inner">
+              <div class="item-title">Advanced features</div>
+            </div>
+          </a>
+          <div class="accordion-item-content">
+            <div class="block">
+              <h3>How to add a custom list or my own resolver?</h3>
+              <p>Just add your custom list ("sources") or resolver ("static") via config editor. You can alter or
+                delete default
+                list as well. DNSCloak will present all "sources" and "static"-s found in it's config on the main
+                screen.
+                Also, you may check out the official dnscrypt-proxy's wiki for propper
+                <a class="external" href="https://github.com/jedisct1/dnscrypt-proxy/wiki/Configuration">"static"
+                  resolver</a> or
+                <a class="external" href="https://github.com/jedisct1/dnscrypt-proxy/wiki/Configuration-Sources">"sources"
+                  list</a> configuration.</p>
+
+              <h3>Where are the description of config options?</h3>
+              <p>
+                <a class="external" href="https://github.com/jedisct1/dnscrypt-proxy/wiki/Configuration">Official
+                  dnscrypt-proxy's wiki.</a>
+              </p>
+
+              <h3>How to speed up resolving?</h3>
+              <p>
+                Learn more about fine tune options and caching
+                <a class="external" href="https://github.com/jedisct1/dnscrypt-proxy/wiki/Caching">here</a>.
+              </p>
+
+              <h3>Where can I found information about filtering?</h3>
+              <p>
+                <a class="external" href="https://github.com/jedisct1/dnscrypt-proxy/wiki/Filters">Here</a>
+              </p>
+
+              <h3>How to build my own blacklist file?</h3>
+              <p>
+                You can use a generator script or public lists from
+                <a class="external" href="https://github.com/jedisct1/dnscrypt-proxy/wiki/Public-blacklists">here</a>.
+              </p>
+
+              <h3>Where can I found information about cloaking?</h3>
+              <p>
+                <a class="external" href="https://github.com/jedisct1/dnscrypt-proxy/wiki/Cloaking">Here</a>
+              </p>
+
+              <h3>Where can I found information about forwarding?</h3>
+              <p>
+                <a class="external" href="https://github.com/jedisct1/dnscrypt-proxy/wiki/Forwarding">Here</a>
+              </p>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,161 @@
+<!-- Copyright (C) 2019 Sergey Smirnov
+   -
+   - This Source Code Form is subject to the terms of the Mozilla Public
+   - License, v. 2.0. If a copy of the MPL was not distributed with this
+   - file, You can obtain one at https://mozilla.org/MPL/2.0/. -->
+
+<div data-name="settings" class="page stacked">
+  <div class="navbar">
+    <div class="navbar-inner">
+      <div class="left sliding">
+        <a href="#" class="back link icon-only"> <i class="icon icon-back"></i></a>
+      </div>
+      <div class="title sliding" data-i18n="settings">Settings</div>
+    </div>
+  </div>
+
+  <div class="page-content">
+    <div class="block about">
+      <div class="about-data">
+        <div class="about-data-block about-data-image"></div>
+      </div>
+      <p><span id="app-version">DNSCloak</span> &copy; 2019 Sergey Smirnov</p>
+    </div>
+
+    <form class="settings-form">
+      <div class="list tablet-inset remove-profile-div">
+        <ul>
+          <li>
+            <a href="#" class="item-link item-content remove-profile">
+              <div class="item-media">
+                <i class="icon ion ion-trash-b"></i>
+              </div>
+              <div class="item-inner">
+                <div class="item-title" data-i18n="remove-profile">Remove profile</div>
+              </div>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="list tablet-inset">
+        <ul>
+          <li>
+            <a href="#" class="item-link item-content set-passcode">
+              <div class="item-media">
+                <i class="icon ion ion-locked"></i>
+              </div>
+              <div class="item-inner">
+                <div class="item-title" data-i18n="set-passcode">Set passcode</div>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="item-link item-content reset-passcode">
+              <div class="item-media">
+                <i class="icon ion ion-unlocked"></i>
+              </div>
+              <div class="item-inner">
+                <div class="item-title" data-i18n="reset-passcode">Remove passcode</div>
+              </div>
+            </a>
+          </li>
+        </ul>
+        <div class="block-footer" data-i18n="passcode-comment">Setup a passcode lock for app. This option may
+          be useful for parental control alongside with enabled "Connect On Demand" option and <a class="external" href="https://support.apple.com/en-us/HT201304">iOS
+            Restrictions</a> for apps deletion.</div>
+      </div>
+
+      <div class="list tablet-inset">
+        <ul>
+          <li>
+            <a href="#" class="item-link item-content restore-defaults">
+              <div class="item-media">
+                <div class="preloader hidden"></div>
+                <i class="icon ion ion-medkit"></i>
+              </div>
+              <div class="item-inner">
+                <div class="item-title" data-i18n="restore-defaults">Restore defaults</div>
+              </div>
+            </a>
+          </li>
+        </ul>
+        <div class="block-footer" data-i18n="restore-defaults-comment">Remove user-defined config and reset to
+          default settings.</div>
+      </div>
+
+      <div class="list tablet-inset">
+        <ul>
+          <li>
+            <a href="#" class="item-link item-content supportapp">
+              <div class="item-media">
+                <i class="icon ion ion-heart"></i>
+              </div>
+              <div class="item-inner">
+                <div class="item-title" data-i18n="supportapp">Support the App</div>
+              </div>
+            </a>
+          </li>
+
+          <li>
+            <a href="#" class="item-link item-content rate-app">
+              <div class="item-media">
+                <i class="icon ion ion-star"></i>
+              </div>
+              <div class="item-inner">
+                <div class="item-title" data-i18n="rate-app">Rate application</div>
+              </div>
+            </a>
+          </li>
+
+          <li class="share">
+            <a href="#" class="item-link item-content share">
+              <div class="item-media">
+                <i class="icon ion ion-share"></i>
+              </div>
+              <div class="item-inner">
+                <div class="item-title" data-i18n="share">Share with friends</div>
+              </div>
+            </a>
+          </li>
+
+          <li>
+            <a href="/faq-en/" class="item-link item-content faq">
+              <div class="item-media">
+                <i class="icon ion ion-help-circled"></i>
+              </div>
+              <div class="item-inner">
+                <div class="item-title" data-i18n="faq">FAQ &amp; Help</div>
+              </div>
+            </a>
+          </li>
+
+          <li>
+            <a href="/legal-en/" class="item-link item-content legal">
+              <div class="item-media">
+                <i class="icon ion ion-information-circled"></i>
+              </div>
+              <div class="item-inner">
+                <div class="item-title" data-i18n="legal">Legal information</div>
+              </div>
+            </a>
+          </li>
+
+          <li>
+            <a href="mailto:" class="item-link item-content mail-dev external">
+              <div class="item-media">
+                <i class="icon ion ion-email"></i>
+              </div>
+              <div class="item-inner">
+                <div class="item-title" data-i18n="feedback">Contact Us</div>
+              </div>
+            </a>
+          </li>
+
+        </ul>
+        <div class="block-footer" data-i18n="feedback-comment">"Contact Us" will send us an email via Mail app.
+          We will reply as soon as possible, our reply can be found in Mail app.</div>
+      </div>
+    </form>
+  </div>
+</div>

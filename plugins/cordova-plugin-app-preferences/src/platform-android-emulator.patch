@@ -1,0 +1,20 @@
+--- platforms/android/cordova/lib/emulator.js.orig	2017-04-26 17:27:16.000000000 +0300
++++ platforms/android/cordova/lib/emulator.js	2017-04-26 17:28:53.000000000 +0300
+@@ -53,7 +53,7 @@
+    }
+  */
+ module.exports.list_images = function() {
+-    return spawn('android', ['list', 'avds'])
++    return spawn('android', ['list', 'avd'])
+     .then(function(output) {
+         var response = output.split('\n');
+         var emulator_list = [];
+@@ -383,7 +383,7 @@
+             function adbInstallWithOptions(target, apk, opts) {
+                 events.emit('verbose', 'Installing apk ' + apk + ' on ' + target + '...');
+ 
+-                var command = 'adb -s ' + target + ' install -r "' + apk + '"';
++                var command = 'adb uninstall "' + pkgName + '"; adb -s ' + target + ' install -r "' + apk + '"';
+                 return Q.promise(function (resolve, reject) {
+                     child_process.exec(command, opts, function(err, stdout, stderr) {
+                         if (err) reject(new CordovaError('Error executing "' + command + '": ' + stderr));

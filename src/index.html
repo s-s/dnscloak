@@ -1,0 +1,40 @@
+<!-- Copyright (C) 2019 Sergey Smirnov
+   -
+   - This Source Code Form is subject to the terms of the Mozilla Public
+   - License, v. 2.0. If a copy of the MPL was not distributed with this
+   - file, You can obtain one at https://mozilla.org/MPL/2.0/. -->
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui, viewport-fit=cover">
+  <meta http-equiv="Content-Security-Policy" content="default-src gap: *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; img-src 'self' data: *; font-src 'self' data: file: *">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="format-detection" content="telephone=no">
+  <title>DNSCloak</title>
+  <link rel="stylesheet" href="app.css">
+</head>
+
+<body class="theme-dark color-theme-yellow">
+  <div id="app">
+    <div class="statusbar"></div>
+    <div class="views">
+      <div class="view view-main ios-edges">
+        ${ require('html-loader!./partials/resolvers-list.html') }
+        ${ require('html-loader?interpolate!./partials/dnssettings.html') }
+        ${ require('html-loader!./partials/logs.html') }
+        ${ require('html-loader!./partials/config-editor.html') }
+        ${ require('html-loader!./partials/settings.html') }
+        ${ require('html-loader!./partials/faq-en.html') }
+        ${ require('html-loader!./partials/legal-en.html') }
+      </div>
+    </div>
+    ${ require('html-loader!./partials/popup-support.html') }
+  </div>
+
+  <script type="text/javascript" src="cordova.js"></script>
+  <script type="text/javascript" src="app.js"></script>
+</body>
+
+</html>

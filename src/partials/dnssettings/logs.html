@@ -1,0 +1,133 @@
+<!-- Copyright (C) 2019 Sergey Smirnov
+   -
+   - This Source Code Form is subject to the terms of the Mozilla Public
+   - License, v. 2.0. If a copy of the MPL was not distributed with this
+   - file, You can obtain one at https://mozilla.org/MPL/2.0/. -->
+
+<div class="list">
+  <ul>
+    <li>
+      <div class="item-content">
+        <div class="item-media">
+          <i class="icon ion ion-wrench"></i>
+        </div>
+        <div class="item-inner">
+          <div class="item-title item-label" style="width: auto;" data-i18n="log-dashboard">Enable
+            service log</div>
+          <div class="item-input" style="width: auto;">
+            <label class="toggle toggle-init color-yellow" data-name="log_file" data-colorable="yes" style="float: right;">
+              <input type="checkbox" name="log_file" />
+              <span class="toggle-icon"></span>
+            </label>
+          </div>
+        </div>
+      </div>
+    </li>
+
+    <li>
+      <div class="item-content item-input">
+        <div class="item-media">
+          <i class="icon ion ion-search"></i>
+        </div>
+        <div class="item-inner">
+          <div class="item-title item-label" data-i18n="log-level">Log level</div>
+          <div class="item-input-wrap">
+            <select name='log-level'>
+              <option value="6">Fatal</option>
+              <option value="5">Critical</option>
+              <option value="4">Error</option>
+              <option value="3">Warning</option>
+              <option value="2">Notice</option>
+              <option value="1">Info</option>
+              <option value="0">Debug</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </li>
+
+    <li class="dns-log">
+      <a href="#" class="item-link item-content dns-log">
+        <div class="item-media">
+          <i class="icon ion ion-clipboard"></i>
+        </div>
+        <div class="item-inner">
+          <div class="item-title" data-i18n="dns-log">Open service log</div>
+        </div>
+      </a>
+    </li>
+  </ul>
+  <div class="block-footer dashboard-comment" data-i18n="comment-log">Log dnscrypt-proxy
+    activity. This log may be useful for diagnostic purposes.</div>
+</div>
+
+<div class="list">
+  <ul>
+    <li>
+      <div class="item-content">
+        <div class="item-media">
+          <i class="icon ion ion-compass"></i>
+        </div>
+        <div class="item-inner">
+          <div class="item-title item-label" style="width: auto;" data-i18n="query-log-dashboard">Log
+            DNS queries</div>
+          <div class="item-input" style="width: auto;">
+            <label class="toggle toggle-init color-yellow" data-name="query_log" data-colorable="yes" style="float: right;">
+              <input type="checkbox" name="query_log" />
+              <span class="toggle-icon"></span>
+            </label>
+          </div>
+        </div>
+      </div>
+    </li>
+
+    <li class="dns-log">
+      <a href="#" class="item-link item-content dns-log-query">
+        <div class="item-media">
+          <i class="icon ion ion-clipboard"></i>
+        </div>
+        <div class="item-inner">
+          <div class="item-title" data-i18n="dns-log-query">Open DNS queries log</div>
+        </div>
+      </a>
+    </li>
+  </ul>
+  <div class="block-footer dashboard-comment" data-i18n="comment-query-log">This log shows
+    general DNS queries and may be useful to inspect your device activity.</div>
+</div>
+
+<div class="list">
+  <ul>
+    <li>
+      <div class="item-content">
+        <div class="item-media">
+          <i class="icon ion ion-paintbucket"></i>
+        </div>
+        <div class="item-inner">
+          <div class="item-title item-label" style="width: auto;" data-i18n="log-dashboard">Log
+            NX queries</div>
+          <div class="item-input" style="width: auto;">
+            <label class="toggle toggle-init color-yellow" data-name="nx_log" data-colorable="yes" style="float: right;">
+              <input type="checkbox" name="nx_log" />
+              <span class="toggle-icon"></span>
+            </label>
+          </div>
+        </div>
+      </div>
+    </li>
+    <li class="dns-log">
+      <a href="#" class="item-link item-content dns-log-nx">
+        <div class="item-media">
+          <i class="icon ion ion-clipboard"></i>
+        </div>
+        <div class="item-inner">
+          <div class="item-title" data-i18n="dns-log-nx">Open NX queries log</div>
+        </div>
+      </a>
+    </li>
+  </ul>
+
+  <div class="block-footer dashboard-comment" data-i18n="comment-nx-log">Log queries for
+    nonexistent zones. These queries can reveal the presence of malware, broken/obsolete
+    applications, and devices signaling their presence to 3rd parties.</div>
+</div>

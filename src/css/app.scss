@@ -1,0 +1,56 @@
+/* Copyright (C) 2019 Sergey Smirnov
+ *
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at https://mozilla.org/MPL/2.0/. */
+
+@import "~framework7/css/framework7.ios.css";
+
+$ionicons-font-path: "~ionicons/fonts";
+@import "~ionicons/scss/ionicons.scss";
+
+@import "~codemirror/lib/codemirror.css";
+@import "~codemirror/theme/tomorrow-night-bright.css";
+
+@import "about.scss";
+@import "accordions.scss";
+@import "config-editor.scss";
+@import "icons.scss";
+@import "misc.scss";
+@import "resolvers-list.scss";
+@import "statusbar.scss";
+
+*:not(input):not(textarea):not(#dns-log) {
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+}
+
+#dns-log {
+  -webkit-user-select: text;
+  user-select: text;
+}
+
+.ios .item-media .icon {
+  color: #ffcc00;
+}
+
+a.supportapp-link {
+  text-decoration: underline;
+  text-decoration-style: dotted;
+}
+
+.supportapp-buttons a+a {
+  margin-top: 10px;
+}
+
+div[data-name="settings"] div.item-media {
+  width: 20px;
+}
+
+div.page[data-name="settings"] .block.about {
+  text-align: center;
+}
+
+div.page[data-name="dnssettings"] .block.support {
+  text-align: center;
+}
