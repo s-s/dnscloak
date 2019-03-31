@@ -18,7 +18,7 @@ Build Instructions for Master
 4. Clone the repository:
 
   ```shell
-  https://github.com/s-s/dnscloak.git
+  git clone https://github.com/s-s/dnscloak.git
   ```
 
 5. Pull in the project dependencies:
