@@ -6,8 +6,57 @@
   "config_munge": {
     "files": {}
   },
-  "installed_plugins": {},
+  "installed_plugins": {
+    "cordova-plugin-whitelist": {
+      "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
+    },
+    "cordova-plugin-splashscreen": {
+      "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
+    },
+    "cordova-plugin-ionic-keyboard": {
+      "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
+    },
+    "cordova-plugin-filepicker": {
+      "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
+    },
+    "cordova-plugin-file": {
+      "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
+    },
+    "cordova-plugin-inappbrowser": {
+      "PACKAGE_NAME": "org.techcultivation.dnscloak"
+    },
+    "cordova-plugin-apprate": {
+      "PACKAGE_NAME": "org.techcultivation.dnscloak"
+    },
+    "cordova-plugin-ionic-webview": {
+      "PACKAGE_NAME": "org.techcultivation.dnscloak"
+    },
+    "cordova-plugin-device": {
+      "PACKAGE_NAME": "org.techcultivation.dnscloak"
+    },
+    "cordova-plugin-statusbar": {
+      "PACKAGE_NAME": "org.techcultivation.dnscloak"
+    },
+    "cordova-plugin-x-socialsharing": {
+      "PACKAGE_NAME": "org.techcultivation.dnscloak"
+    },
+    "cordova-plugin-app-preferences": {
+      "PACKAGE_NAME": "org.techcultivation.dnscloak"
+    },
+    "cordova-plugin-dnstool": {
+      "PACKAGE_NAME": "org.techcultivation.dnscloak"
+    },
+    "cordova-plugin-pinlock": {
+      "PACKAGE_NAME": "org.techcultivation.dnscloak"
+    }
+  },
   "dependent_plugins": {
+    "cordova-plugin-dialogs": {
+      "PACKAGE_NAME": "org.techcultivation.dnscloak"
+    },
+    "cordova-plugin-nativestorage": {
+      "PACKAGE_NAME": "org.techcultivation.dnscloak"
+    },
     "es6-promise-plugin": {
       "PACKAGE_NAME": "org.techcultivation.dnscloak"
     }

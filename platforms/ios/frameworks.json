@@ -1,0 +1,7 @@
+{
+    "AudioToolbox.framework": 1,
+    "StoreKit.framework": 1,
+    "WebKit.framework": 1,
+    "Social.framework": 1,
+    "MessageUI.framework": 1
+}
