@@ -25,7 +25,7 @@ Build Instructions for Master
 
   ```shell
   cd dnscloak
-  npm install
+  npm install && npm install --only=dev
   ```
 
 6. Build framework, (re)build www folder for cordova and prepare project for Xcode:
