@@ -8,3 +8,6 @@ build/
 
 config.xml
 Dnscryptproxy.framework
+
+/*.xcodeproj/xcuserdata
+/*.xcworkspace/xcuserdata
