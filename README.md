@@ -2,6 +2,8 @@
 
 _iOS GUI and wrapper for [dnscrypt-proxy 2](https://github.com/jedisct1/dnscrypt-proxy)._
 
+Uses [Apache Cordova](https://cordova.apache.org) as app platform & [Framework7](https://framework7.io) as UI.
+
 Available on the [App Store](https://itunes.apple.com/app/id1452162351).
 
 Master Branch
