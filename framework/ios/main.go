@@ -93,6 +93,7 @@ func (app *App) start() error {
 func (app *App) appMain(proxy *dnscrypt.Proxy) {
 	proxy.StartProxy()
 	<-app.quit
+	proxy.StopProxy()
 	dlog.Notice("Quit signal received...")
 	app.wg.Done()
 }
@@ -100,5 +101,6 @@ func (app *App) appMain(proxy *dnscrypt.Proxy) {
 func (app *App) Stop() error {
 	dlog.Notice("Stopped.")
 	app.quit <- true
+	app.wg.Wait()
 	return nil
 }
