@@ -6,7 +6,6 @@
 build/
 /www
 
-config.xml
 Dnscryptproxy.framework
 
 /*.xcodeproj/xcuserdata

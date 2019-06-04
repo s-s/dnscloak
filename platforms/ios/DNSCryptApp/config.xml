@@ -1,0 +1,132 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="org.techcultivation.dnscloak" ios-CFBundleVersion="0.0.2" version="2.2.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <feature name="LocalStorage">
+        <param name="ios-package" value="CDVLocalStorage" />
+    </feature>
+    <feature name="Console">
+        <param name="ios-package" value="CDVLogger" />
+        <param name="onload" value="true" />
+    </feature>
+    <feature name="HandleOpenUrl">
+        <param name="ios-package" value="CDVHandleOpenURL" />
+        <param name="onload" value="true" />
+    </feature>
+    <feature name="IntentAndNavigationFilter">
+        <param name="ios-package" value="CDVIntentAndNavigationFilter" />
+        <param name="onload" value="true" />
+    </feature>
+    <feature name="GestureHandler">
+        <param name="ios-package" value="CDVGestureHandler" />
+        <param name="onload" value="true" />
+    </feature>
+    <feature name="SplashScreen">
+        <param name="ios-package" value="CDVSplashScreen" />
+        <param name="onload" value="true" />
+    </feature>
+    <feature name="Keyboard">
+        <param name="ios-package" onload="true" value="CDVIonicKeyboard" />
+    </feature>
+    <feature name="FilePicker">
+        <param name="ios-package" value="FilePicker" />
+    </feature>
+    <feature name="File">
+        <param name="ios-package" value="CDVFile" />
+        <param name="onload" value="true" />
+    </feature>
+    <feature name="InAppBrowser">
+        <param name="ios-package" value="CDVInAppBrowser" />
+        <param name="onload" value="true" />
+    </feature>
+    <feature name="UIInAppBrowser">
+        <param name="ios-package" value="CDVUIInAppBrowser" />
+        <param name="onload" value="true" />
+    </feature>
+    <feature name="WKInAppBrowser">
+        <param name="ios-package" value="CDVWKInAppBrowser" />
+        <param name="onload" value="true" />
+    </feature>
+    <feature name="Notification">
+        <param name="ios-package" value="CDVNotification" />
+    </feature>
+    <feature name="NativeStorage">
+        <param name="ios-package" value="NativeStorage" />
+    </feature>
+    <feature name="AppRate">
+        <param name="ios-package" value="CDVAppRate" />
+    </feature>
+    <allow-navigation href="ionic://*" />
+    <feature name="IonicWebView">
+        <param name="ios-package" value="CDVWKWebViewEngine" />
+    </feature>
+    <feature name="Device">
+        <param name="ios-package" value="CDVDevice" />
+    </feature>
+    <feature name="StatusBar">
+        <param name="ios-package" value="CDVStatusBar" />
+        <param name="onload" value="true" />
+    </feature>
+    <feature name="SocialSharing">
+        <param name="ios-package" value="SocialSharing" />
+        <param name="onload" value="true" />
+    </feature>
+    <feature name="AppPreferences">
+        <param name="ios-package" value="AppPreferences" />
+    </feature>
+    <feature name="CordovaDnstool">
+        <param name="ios-package" value="CordovaDnstool" />
+    </feature>
+    <feature name="CordovaPinlock">
+        <param name="ios-package" value="CordovaPinlock" />
+    </feature>
+    <name>DNSCryptApp</name>
+    <description>
+        Secure DNS client for iOS. Supports DNSCrypt v2 and DNS-over-HTTPS protocols.
+    </description>
+    <author email="sergey.smirnov.dev@gmail.com">
+        Sergey Smirnov
+    </author>
+    <content src="index.html" />
+    <access origin="*" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <allow-intent href="tel:*" />
+    <allow-intent href="sms:*" />
+    <allow-intent href="mailto:*" />
+    <allow-intent href="geo:*" />
+    <splash src="res/Default@2x~iphone~anyany.png" />
+    <splash src="res/Default@2x~iphone~comany.png" />
+    <splash src="res/Default@2x~iphone~comcom.png" />
+    <splash src="res/Default@3x~iphone~anyany.png" />
+    <splash src="res/Default@3x~iphone~anycom.png" />
+    <splash src="res/Default@3x~iphone~comany.png" />
+    <splash src="res/Default@2x~ipad~anyany.png" />
+    <splash src="res/Default@2x~ipad~comany.png" />
+    <allow-intent href="itms:*" />
+    <allow-intent href="itms-apps:*" />
+    <allow-navigation href="gap://ready" />
+    <preference name="AllowInlineMediaPlayback" value="false" />
+    <preference name="BackupWebStorage" value="local" />
+    <preference name="DisallowOverscroll" value="true" />
+    <preference name="EnableViewportScale" value="false" />
+    <preference name="KeyboardDisplayRequiresUserAction" value="true" />
+    <preference name="MediaPlaybackRequiresUserAction" value="false" />
+    <preference name="SuppressesIncrementalRendering" value="false" />
+    <preference name="SuppressesLongPressGesture" value="false" />
+    <preference name="Suppresses3DTouchGesture" value="false" />
+    <preference name="GapBetweenPages" value="0" />
+    <preference name="PageLength" value="0" />
+    <preference name="PaginationBreakingMode" value="page" />
+    <preference name="PaginationMode" value="unpaginated" />
+    <preference name="StatusBarOverlaysWebView" value="true" />
+    <preference name="StatusBarStyle" value="lightcontent" />
+    <preference name="HideKeyboardFormAccessoryBar " value="true" />
+    <preference name="SplashScreen" value="screen" />
+    <preference name="AutoHideSplashScreen" value="false" />
+    <preference name="ShowSplashScreenSpinner" value="false" />
+    <preference name="FadeSplashScreenDuration" value="400" />
+    <preference name="BackgroundColor" value="0xff222426" />
+    <preference name="CordovaWebViewEngine" value="CDVWKWebViewEngine" />
+    <preference name="KeychainAccessibility" value="Always" />
+    <preference name="Orientation" value="portrait" />
+    <preference name="KeyboardAppearanceDark" value="true" />
+</widget>
