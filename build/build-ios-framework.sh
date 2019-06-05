@@ -82,20 +82,7 @@ mkdir -p $GOPATH
 rm -fr Dnscryptproxy.framework/
 
 # fetch & init gomobile
-
-# broken for Xcode 10.2, see https://github.com/golang/go/issues/31015
-#go get golang.org/x/mobile/cmd/gomobile
-
-# temporary workaround for Xcode 10.2
-go get -d 'golang.org/x/mobile/cmd/gomobile'
-cd $GOPATH/src/golang.org/x/mobile
-git remote add ss-gomobile https://github.com/s-s/mobile.git
-git fetch ss-gomobile --quiet
-git checkout xcode-10-2 --quiet
-cd $REPOROOT
-go get 'golang.org/x/mobile/cmd/gomobile'
-
-
+go get golang.org/x/mobile/cmd/gomobile
 gomobile init
 
 # fetch vanilla dnscrypt-proxy
