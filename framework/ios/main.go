@@ -7,6 +7,9 @@
 package dnscryptproxy
 
 import (
+	crypto_rand "crypto/rand"
+	"encoding/binary"
+	"math/rand"
 	"fmt"
 	"os"
 	"runtime/debug"
@@ -40,6 +43,10 @@ func Main(configFile string) *App {
 	if err := os.Setenv("GODEBUG", goDebug); err != nil {
 		tls13ok = false
 	}
+
+	seed := make([]byte, 8)
+	crypto_rand.Read(seed)
+	rand.Seed(int64(binary.LittleEndian.Uint64(seed[:])))
 
 	dlog.Init("dnscrypt-proxy", dlog.SeverityNotice, "DAEMON")
 
