@@ -22,6 +22,16 @@ func RefreshServersInfoCloak(app *App) {
 	dnscrypt.RefreshServersInfoCloak(&app.proxy)
 }
 
+func (app *App) RefreshServersInfo() int {
+	proxy := &app.proxy
+	return proxy.RefreshServersInfo()
+}
+
+func (app *App) CloseIdleConnections() {
+	proxy := &app.proxy
+	proxy.CloseIdleConnections()
+}
+
 func (app *App) LogDebug(s string) {
 	dlog.Debug(s)
 }
