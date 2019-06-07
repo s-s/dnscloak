@@ -9,12 +9,16 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+extern NSString *const kDNSCryptProxyReady;
+
 NS_SWIFT_NAME(DNSCryptThread)
 @interface DNSCryptThread : NSThread <DnscryptproxyCloakCallback>
 - (instancetype)initWithArguments:(nullable NSArray<NSString *> *)arguments NS_DESIGNATED_INITIALIZER;
 - (void)proxyReady;
 
 - (void)stopApp;
+- (void)closeIdleConnections;
+- (void)refreshServersInfo;
 
 - (void)logDebug:(NSString *)str;
 - (void)logInfo:(NSString *)str;

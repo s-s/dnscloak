@@ -89,7 +89,6 @@
         }];
     } else {
         NSUserDefaults *defs = [self sharedDefs];
-        NEPacketTunnelNetworkSettings *networkSettings = [self getNetworkSettings];
         
         NSString *net_type = [defs stringForKey:@"netType"];
         
@@ -97,12 +96,17 @@
             net_type = @"2";
         }
         
-        if ([net_type isEqualToString:@""]) {
-            _reach = [Reachability reachabilityForInternetConnection];
-            [[NSNotificationCenter defaultCenter] addObserver:weakSelf selector:@selector(reachChanged:) name:kReachabilityChangedNotification object:nil];
-        }
+        _reach = [Reachability reachabilityForInternetConnection];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:weakSelf selector:@selector(reachabilityChanged:) name:kReachabilityChangedNotification object:nil];
+        
+        NEPacketTunnelNetworkSettings *networkSettings = [self getNetworkSettings];
         
         BOOL skipWaitResolvers = [defs boolForKey:@"skipWaitResolvers"];
+        
+        if (![_reach isReachable] || [_reach isConnectionRequired]) {
+            skipWaitResolvers = YES;
+        }
         
         NSMutableArray<NSString *> *args = [@[
                                               [configFile path]
@@ -111,22 +115,21 @@
         _dns = [[DNSCryptThread alloc] initWithArguments:[args copy]];
         
         if (skipWaitResolvers) {
-            [_dns start];
+            [self startProxy];
             [_dns logNotice:@"Skipping available resolvers check, tell iOS we are ready"];
+            
             [self setTunnelNetworkSettings:networkSettings completionHandler:^(NSError * _Nullable error) {
                 if (error) {
                     completionHandler(error);
                 } else {
                     _lastForcedResolversCheck = [NSDate date];
-                    if ([net_type isEqualToString:@""]) {
-                        [weakSelf.reach startNotifier];
-                    }
+                    [weakSelf.reach startNotifier];
                     completionHandler(nil);
                 }
             }];
         } else {
             NSNotificationCenter * __weak center = [NSNotificationCenter defaultCenter];
-            id __block token = [center addObserverForName:@"DNSCryptProxyReady"
+            id __block token = [center addObserverForName:kDNSCryptProxyReady
                                                    object:nil
                                                     queue:[NSOperationQueue mainQueue]
                                                usingBlock:^(NSNotification *note) {
@@ -139,17 +142,20 @@
                                                            completionHandler(error);
                                                        } else {
                                                            _lastForcedResolversCheck = [NSDate date];
-                                                           if ([net_type isEqualToString:@""]) {
-                                                               [weakSelf.reach startNotifier];
-                                                           }
+                                                           [weakSelf.reach startNotifier];
                                                            completionHandler(nil);
                                                        }
                                                    }];
                                                }];
-            [_dns start];
+            [self startProxy];
             [_dns logInfo:@"Waiting for available resolvers check."];
         }
     }
+}
+
+- (void)startProxy {
+    [_dns start];
+    [_dns logInfo:[NSString stringWithFormat:@"Current reachability is [%@]", [_reach currentReachabilityFlags]]];
 }
 
 - (void)stopTunnelWithReason:(NEProviderStopReason)reason completionHandler:(void (^)(void))completionHandler {
@@ -176,9 +182,31 @@
         [self reactivateTunnel: NO];
 }
 
-- (void)reachChanged:(NSNotification *)note {
-    [_dns logInfo:@"Network type changed, checking connectivity type"];
-    [self reactivateTunnel:NO];
+- (void)reachabilityChanged:(NSNotification *)note {
+    Reachability *r = (Reachability*) note.object;
+    [_dns logInfo:[NSString stringWithFormat:@"Reachability changed to [%@]", [r currentReachabilityFlags]]];
+    
+    if ([r isReachable] && ![r isConnectionRequired]) {
+        NSUserDefaults *defs = [self sharedDefs];
+        NSString *net_type = [defs stringForKey:@"netType"];
+        
+        if (net_type != nil && [net_type isEqualToString:@""]) {
+            [_dns logInfo:@"Network connection has changed, refreshing network extension settings and servers info"];
+            [self reactivateTunnel:NO];
+        } else {
+            [_dns logInfo:@"Network connection has changed, refreshing servers info"];
+            BOOL skipWaitResolvers = [defs boolForKey:@"skipWaitResolvers"];
+            
+            if (!skipWaitResolvers) self.reasserting = YES;
+            [self refreshServers];
+            if (!skipWaitResolvers) self.reasserting = NO;
+        }
+    }
+}
+
+- (void)refreshServers {
+    [_dns closeIdleConnections];
+    [_dns refreshServersInfo];
 }
 
 - (void)reactivateTunnel:(BOOL)isInitialize {
@@ -203,12 +231,23 @@
             weakSelf.reasserting = NO;
         }];
     } else {
+        NSUserDefaults *defs = [self sharedDefs];
+        BOOL skipWaitResolvers = [defs boolForKey:@"skipWaitResolvers"];
+        
+        if (!skipWaitResolvers) {
+            [self refreshServers];
+        }
+        
         NEPacketTunnelNetworkSettings *networkSettings = [self getNetworkSettings];
         
         _lastForcedResolversCheck = [NSDate date];
         
         [self setTunnelNetworkSettings:networkSettings completionHandler:^(NSError * _Nullable error) {
             weakSelf.reasserting = NO;
+            
+            if (skipWaitResolvers) {
+                [weakSelf refreshServers];
+            }
         }];
     }
 }
@@ -243,12 +282,6 @@
             hasIPv4 = YES;
         }
     }
-    
-    /**********
-     if ([net_type isEqualToString:@""]) {
-     DnscryptproxyRefreshServersInfoCloak(_dns.dnsApp);
-     }
-     *************/
     
     NEPacketTunnelNetworkSettings *networkSettings = [[NEPacketTunnelNetworkSettings alloc] initWithTunnelRemoteAddress: hasIPv6 ? @"::1" : @"127.0.0.1" ];
     

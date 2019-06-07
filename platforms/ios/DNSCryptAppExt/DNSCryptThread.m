@@ -8,6 +8,8 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+NSString *const kDNSCryptProxyReady = @"DNSCryptProxyReady";
+
 @interface DNSCryptThread ()
 @end
 
@@ -33,13 +35,19 @@ NS_ASSUME_NONNULL_BEGIN
 }
 
 - (void) proxyReady {
-    [[NSNotificationCenter defaultCenter]
-     postNotificationName:@"DNSCryptProxyReady"
-     object:self];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kDNSCryptProxyReady object:self];
 }
 
 - (DnscryptproxyApp *)dnsApp {
     return _dnsApp;
+}
+
+- (void)closeIdleConnections {
+    [_dnsApp closeIdleConnections];
+}
+
+- (void)refreshServersInfo {
+    [_dnsApp refreshServersInfo];
 }
 
 - (void)stopApp {
