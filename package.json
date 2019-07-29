@@ -40,7 +40,7 @@
     "es6-promise-plugin": "^4.2.2",
     "framework7": "^3.6.7",
     "ionicons": "^2.0.1",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.15",
     "wolfy87-eventemitter": "^5.2.6"
   },
   "cordova": {
