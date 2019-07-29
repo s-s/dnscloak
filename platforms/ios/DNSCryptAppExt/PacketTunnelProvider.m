@@ -186,22 +186,12 @@
     Reachability *r = (Reachability*) note.object;
     [_dns logInfo:[NSString stringWithFormat:@"Reachability changed to [%@]", [r currentReachabilityFlags]]];
     
-    if ([r isReachable] && ![r isConnectionRequired]) {
-        NSUserDefaults *defs = [self sharedDefs];
-        NSString *net_type = [defs stringForKey:@"netType"];
-        
-        if (net_type != nil && [net_type isEqualToString:@""]) {
-            [_dns logInfo:@"Network connection has changed, refreshing network extension settings and servers info"];
-            [self reactivateTunnel:NO];
-        } else {
-            [_dns logInfo:@"Network connection has changed, refreshing servers info"];
-            BOOL skipWaitResolvers = [defs boolForKey:@"skipWaitResolvers"];
-            
-            if (!skipWaitResolvers) self.reasserting = YES;
-            [self refreshServers];
-            if (!skipWaitResolvers) self.reasserting = NO;
-        }
-    }
+    self.reasserting = YES;
+    
+    __strong typeof(self) strongSelf = self;
+    [self setTunnelNetworkSettings:nil completionHandler:^(NSError * _Nullable error) {
+        [strongSelf reactivateTunnel:NO];
+    }];
 }
 
 - (void)refreshServers {
