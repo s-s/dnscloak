@@ -7,23 +7,21 @@
 package plugins
 
 import (
+	"bufio"
 	"errors"
 	"fmt"
 	"net"
+	"os"
 	"strings"
 	"time"
 	"unicode"
-
-	"mradix"
-
-	"bufio"
-	"os"
 
 	"github.com/jedisct1/dlog"
 	"github.com/miekg/dns"
 	lumberjack "gopkg.in/natefinch/lumberjack.v2"
 
 	dnscrypt "github.com/jedisct1/dnscrypt-proxy/dnscrypt-proxy"
+	mradix "github.com/jedisct1/dnscrypt-proxy/dnscrypt-proxy/ios/mradix"
 )
 
 type PluginBlockIP struct {

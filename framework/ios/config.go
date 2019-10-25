@@ -172,7 +172,7 @@ func (config *Config) ListServers() (string, error) {
 		}
 	}
 
-	for cfgSrvName, cfgSrv := range config.config.ServersConfig {
+	for cfgSrvName, cfgSrv := range config.config.StaticsConfig {
 		stamp, err := stamps.NewServerStampFromString(cfgSrv.Stamp)
 		if err != nil {
 			return "", fmt.Errorf("Invalid or unsupported stamp: [%v]", cfgSrv.Stamp)

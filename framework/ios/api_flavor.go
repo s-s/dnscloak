@@ -19,16 +19,16 @@ func PrefetchSourceURLCloak(timeout_int int, useIPv4 bool, useIPv6 bool, fallbac
 }
 
 func RefreshServersInfoCloak(app *App) {
-	dnscrypt.RefreshServersInfoCloak(&app.proxy)
+	dnscrypt.RefreshServersInfoCloak(app.proxy)
 }
 
 func (app *App) RefreshServersInfo() int {
-	proxy := &app.proxy
+	proxy := app.proxy
 	return proxy.RefreshServersInfo()
 }
 
 func (app *App) CloseIdleConnections() {
-	proxy := &app.proxy
+	proxy := app.proxy
 	proxy.CloseIdleConnections()
 }
 

@@ -1,5 +1,5 @@
 /* Copyright (C) 2019 Sergey Smirnov
- * 
+ *
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at https://mozilla.org/MPL/2.0/. */
@@ -11,11 +11,10 @@ import (
 	"path/filepath"
 	"strings"
 
-	"mradix"
-
 	"github.com/jedisct1/dlog"
 
 	dnscrypt "github.com/jedisct1/dnscrypt-proxy/dnscrypt-proxy"
+	mradix "github.com/jedisct1/dnscrypt-proxy/dnscrypt-proxy/ios/mradix"
 )
 
 type PatternMatcherMmap struct {
@@ -27,7 +26,6 @@ type PatternMatcherMmap struct {
 	indirectVals      map[string]interface{}
 }
 
-
 func isGlobCandidate(str string) bool {
 	for i, c := range str {
 		if c == '?' || c == '[' {
@@ -38,7 +36,6 @@ func isGlobCandidate(str string) bool {
 	}
 	return false
 }
-
 
 func NewPatternPatcherMmap(path string) *PatternMatcherMmap {
 	patternMatcher := PatternMatcherMmap{

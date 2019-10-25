@@ -82,6 +82,7 @@ mkdir -p $GOPATH
 rm -fr Dnscryptproxy.framework/
 
 # fetch & init gomobile
+go get golang.org/x/tools/go/packages
 go get golang.org/x/mobile/cmd/gomobile
 gomobile init
 
@@ -93,6 +94,9 @@ cd $PKGPATH
 git remote add dnscloak https://github.com/s-s/dnscrypt-proxy.git
 git fetch dnscloak --quiet
 git checkout ios --quiet
+
+# temporary fix for non-vendoring gomobile
+rm -rf $PKGPATH/vendor
 
 # prepare dnscrypt-proxy sources
 cd $PKGPATH/dnscrypt-proxy

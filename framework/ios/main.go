@@ -9,8 +9,8 @@ package dnscryptproxy
 import (
 	crypto_rand "crypto/rand"
 	"encoding/binary"
-	"math/rand"
 	"fmt"
+	"math/rand"
 	"os"
 	"runtime/debug"
 	"sync"
@@ -24,7 +24,7 @@ import (
 type App struct {
 	wg    sync.WaitGroup
 	quit  chan bool
-	proxy dnscrypt.Proxy
+	proxy *dnscrypt.Proxy
 }
 
 type CloakCallback interface {
@@ -55,7 +55,7 @@ func Main(configFile string) *App {
 
 	emptyStr := ""
 
-	if err := dnscrypt.ConfigLoad(&app.proxy, &emptyStr, configFile); err != nil {
+	if err := dnscrypt.ConfigLoad(app.proxy, &emptyStr, configFile); err != nil {
 		dlog.Fatal(err)
 	}
 
@@ -87,7 +87,7 @@ func (app *App) Run(cloakCallback CloakCallback) {
 }
 
 func (app *App) start() error {
-	proxy := &app.proxy
+	proxy := app.proxy
 	if err := initPluginsGlobals(proxy.GetPluginsGlobals(), proxy); err != nil {
 		dlog.Fatal(err)
 	}
