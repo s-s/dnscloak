@@ -25,6 +25,7 @@ type App struct {
 	wg    sync.WaitGroup
 	quit  chan bool
 	proxy *dnscrypt.Proxy
+	flags *dnscrypt.ConfigFlags
 }
 
 type CloakCallback interface {
@@ -50,12 +51,24 @@ func Main(configFile string) *App {
 
 	dlog.Init("dnscrypt-proxy", dlog.SeverityNotice, "DAEMON")
 
-	app := &App{}
+	falsie := false
+	npTimeout := 60
+	flags := dnscrypt.ConfigFlags{}
+	flags.List = &falsie
+	flags.ListAll = &falsie
+	flags.JsonOutput = &falsie
+	flags.Check = &falsie
+	flags.ConfigFile = &configFile
+	flags.Child = &falsie
+	flags.NetprobeTimeoutOverride = &npTimeout
+	flags.ShowCerts = &falsie
+
+	app := &App{
+		flags: &flags,
+	}
 	app.proxy = dnscrypt.NewProxy()
 
-	emptyStr := ""
-
-	if err := dnscrypt.ConfigLoad(app.proxy, &emptyStr, configFile); err != nil {
+	if err := dnscrypt.ConfigLoad(app.proxy, app.flags); err != nil {
 		dlog.Fatal(err)
 	}
 
