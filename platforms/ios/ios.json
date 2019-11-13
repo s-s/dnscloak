@@ -85,11 +85,11 @@
               "count": 1
             },
             {
-              "xml": "<feature name=\"CordovaDnstool\"><param name=\"ios-package\" value=\"CordovaDnstool\" /></feature>",
+              "xml": "<feature name=\"CordovaPinlock\"><param name=\"ios-package\" value=\"CordovaPinlock\" /></feature>",
               "count": 1
             },
             {
-              "xml": "<feature name=\"CordovaPinlock\"><param name=\"ios-package\" value=\"CordovaPinlock\" /></feature>",
+              "xml": "<feature name=\"CordovaDnstool\"><param name=\"ios-package\" value=\"CordovaDnstool\" /></feature>",
               "count": 1
             }
           ]
@@ -159,10 +159,10 @@
     "cordova-plugin-app-preferences": {
       "PACKAGE_NAME": "org.techcultivation.dnscloak"
     },
-    "cordova-plugin-dnstool": {
+    "cordova-plugin-pinlock": {
       "PACKAGE_NAME": "org.techcultivation.dnscloak"
     },
-    "cordova-plugin-pinlock": {
+    "cordova-plugin-dnstool": {
       "PACKAGE_NAME": "org.techcultivation.dnscloak"
     }
   },
@@ -475,19 +475,19 @@
       ]
     },
     {
-      "id": "cordova-plugin-dnstool.CordovaDnstool",
-      "file": "plugins/cordova-plugin-dnstool/www/CordovaDnstool.js",
-      "pluginId": "cordova-plugin-dnstool",
-      "clobbers": [
-        "dnstool"
-      ]
-    },
-    {
       "id": "cordova-plugin-pinlock.CordovaPinlock",
       "file": "plugins/cordova-plugin-pinlock/www/CordovaPinlock.js",
       "pluginId": "cordova-plugin-pinlock",
       "clobbers": [
         "pinlock"
+      ]
+    },
+    {
+      "id": "cordova-plugin-dnstool.CordovaDnstool",
+      "file": "plugins/cordova-plugin-dnstool/www/CordovaDnstool.js",
+      "pluginId": "cordova-plugin-dnstool",
+      "clobbers": [
+        "dnstool"
       ]
     }
   ],
@@ -507,7 +507,7 @@
     "es6-promise-plugin": "4.2.2",
     "cordova-plugin-x-socialsharing": "5.4.4",
     "cordova-plugin-app-preferences": "0.99.3",
-    "cordova-plugin-dnstool": "0.0.1",
-    "cordova-plugin-pinlock": "0.0.1"
+    "cordova-plugin-pinlock": "0.0.1",
+    "cordova-plugin-dnstool": "0.0.2"
   }
 }

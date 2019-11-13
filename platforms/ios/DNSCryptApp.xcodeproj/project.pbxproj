@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		0207DA581B56EA530066E2B4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0207DA571B56EA530066E2B4 /* Images.xcassets */; };
-		08C3C29804DD4A9F886A23D4 /* NetTester.m in Sources */ = {isa = PBXBuildFile; fileRef = CCD3EC6119C84CEB8132CBDF /* NetTester.m */; };
 		0BB81122F89347628821B59E /* CDVFile.m in Sources */ = {isa = PBXBuildFile; fileRef = D88FD4270BB444EF9151644A /* CDVFile.m */; };
 		0D9A3BB4D76C47829BA3585D /* FilePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = C14A513BDBEF4B6AB3A69B52 /* FilePicker.m */; };
 		1172CC57A3F44B7B97656535 /* CDVWKInAppBrowserUIDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B5DD275F49754A22AB7A3851 /* CDVWKInAppBrowserUIDelegate.m */; };
@@ -17,17 +16,18 @@
 		1D3623260D0F684500981E51 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* AppDelegate.m */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		28687504A0334FC4BF0813DC /* CDVNotification.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 999E98F2519D43F9836F6E32 /* CDVNotification.bundle */; };
-		296FD9EB3D474C1899615548 /* CordovaDnstool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553E5234A3214689830F7A50 /* CordovaDnstool.swift */; };
 		301BF552109A68D80062928A /* libCordova.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 301BF535109A57CC0062928A /* libCordova.a */; settings = {ATTRIBUTES = (Required, ); }; };
 		302D95F114D2391D003F00A1 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 302D95EF14D2391D003F00A1 /* MainViewController.m */; };
 		302D95F214D2391D003F00A1 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 302D95F014D2391D003F00A1 /* MainViewController.xib */; };
 		36E32200A4114B19A978EBE4 /* JKLLockScreenPincodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 02AA023E6D5244CEAA1DD9DC /* JKLLockScreenPincodeView.m */; };
 		3D925F093A6F4B12A83855C5 /* CDVLocalFilesystem.m in Sources */ = {isa = PBXBuildFile; fileRef = DAA71E1A02ED43CCBBFB2EBB /* CDVLocalFilesystem.m */; };
+		489222BDBCEC4D0C89C3FBC6 /* NetTester.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F1762B52694474BB34FC642 /* NetTester.m */; };
 		4F79AB2D4323495A9C611D39 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D25E22635A274049BA479ECA /* MessageUI.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		5D577B03ECA3447F89EAC84C /* CDVSplashScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 15C69092B2724B228B121B94 /* CDVSplashScreen.m */; };
 		5F06A85C77F54C68844697DA /* NSString+SSURLEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C1671D8E84435BAF2108E1 /* NSString+SSURLEncoding.m */; };
 		60CE06B259BF4492A8F68B79 /* NativeStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = A4BFDAD7FFC846CA891E23BA /* NativeStorage.m */; };
 		620424151FA44DF6BB239346 /* CDVWKProcessPoolFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 47537E603872452E8B00F527 /* CDVWKProcessPoolFactory.m */; };
+		63308BCF237B21C000216C64 /* NetTester.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F1762B52694474BB34FC642 /* NetTester.m */; };
 		633EF3E91FF2AF49009E9EC1 /* PacketTunnelProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 633EF3E81FF2AF49009E9EC1 /* PacketTunnelProvider.m */; };
 		633EF3ED1FF2AF49009E9EC1 /* DNSCryptAppExt.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 633EF3E31FF2AF49009E9EC1 /* DNSCryptAppExt.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		633EF4071FF2B232009E9EC1 /* DNSCryptThread.m in Sources */ = {isa = PBXBuildFile; fileRef = 633EF4031FF2B231009E9EC1 /* DNSCryptThread.m */; };
@@ -38,7 +38,6 @@
 		636411292080B1FE00C15146 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 636411262080B1FE00C15146 /* Reachability.m */; };
 		637BAF302118427100948740 /* Dnscryptproxy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 638A32642010D4D0004B5D2C /* Dnscryptproxy.framework */; };
 		6399AF4B201B640E00A40B5B /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6399AF4A201B640E00A40B5B /* NetworkExtension.framework */; };
-		63D63F25224E3D3F00220379 /* NetTester.m in Sources */ = {isa = PBXBuildFile; fileRef = CCD3EC6119C84CEB8132CBDF /* NetTester.m */; };
 		6834E757A4EF44FF98F9BE1F /* CDVWKInAppBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = FCCF9E258B784E57A3443422 /* CDVWKInAppBrowser.m */; };
 		6859A942E917485282F2E07F /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2B9E3F31C4B4EA7A142491D /* Social.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		6A4F02F6CD1341C7AF2DC928 /* CDVViewController+SplashScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = AB2A548FD87E4659A35ED816 /* CDVViewController+SplashScreen.m */; };
@@ -60,6 +59,7 @@
 		C43609FBFD5F4EA4948C6362 /* JKLLockScreenNumber.m in Sources */ = {isa = PBXBuildFile; fileRef = EB51BE8944BB40D8AC37FB33 /* JKLLockScreenNumber.m */; };
 		C495F87A37DA4395BC5B2101 /* CDVWKWebViewUIDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C217D3E3F8F54E3DA4B06235 /* CDVWKWebViewUIDelegate.m */; };
 		CCE2BA5652204DE6B3262541 /* CDVAssetLibraryFilesystem.m in Sources */ = {isa = PBXBuildFile; fileRef = 67FD78F78EA14DA394D48210 /* CDVAssetLibraryFilesystem.m */; };
+		CE5A4253FB864E3FBE6FDB46 /* CordovaDnstool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A2F491ACB94EDC8EA06B32 /* CordovaDnstool.swift */; };
 		D153080A99AC477A97E4166E /* CDVInAppBrowserOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B2C2350510B40B09FC277CB /* CDVInAppBrowserOptions.m */; };
 		E52442EAA29F4F82AD7AE5A5 /* CDVInAppBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = 33B599F6A0CE4656A31FDA2B /* CDVInAppBrowser.m */; };
 		E7DF9B136B17495EAD1E9DC4 /* SocialSharing.m in Sources */ = {isa = PBXBuildFile; fileRef = B5DD75B41D4641AE9143D290 /* SocialSharing.m */; };
@@ -133,6 +133,7 @@
 		3047A5101AB8059700498E2A /* build-release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "build-release.xcconfig"; path = "cordova/build-release.xcconfig"; sourceTree = SOURCE_ROOT; };
 		3047A5111AB8059700498E2A /* build.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = build.xcconfig; path = cordova/build.xcconfig; sourceTree = SOURCE_ROOT; };
 		3123D4FBFCFE4DCF87735CB1 /* CDVInAppBrowserNavigationController.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = CDVInAppBrowserNavigationController.h; path = "cordova-plugin-inappbrowser/CDVInAppBrowserNavigationController.h"; sourceTree = "<group>"; };
+		32A2F491ACB94EDC8EA06B32 /* CordovaDnstool.swift */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.swift; name = CordovaDnstool.swift; path = "cordova-plugin-dnstool/CordovaDnstool.swift"; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* DNSCryptApp-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DNSCryptApp-Prefix.pch"; sourceTree = "<group>"; };
 		33B599F6A0CE4656A31FDA2B /* CDVInAppBrowser.m */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.objc; name = CDVInAppBrowser.m; path = "cordova-plugin-inappbrowser/CDVInAppBrowser.m"; sourceTree = "<group>"; };
 		364A1EBEBA3440D6B50650C2 /* FilePicker.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = FilePicker.h; path = "cordova-plugin-filepicker/FilePicker.h"; sourceTree = "<group>"; };
@@ -148,10 +149,10 @@
 		4B42C6F892F2498396D84243 /* CDVIonicKeyboard.m */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.objc; name = CDVIonicKeyboard.m; path = "cordova-plugin-ionic-keyboard/CDVIonicKeyboard.m"; sourceTree = "<group>"; };
 		4C78DD6AEF7B429C9DD79D3E /* CDVAppRate.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = CDVAppRate.h; path = "cordova-plugin-apprate/CDVAppRate.h"; sourceTree = "<group>"; };
 		50199F4FA61C4ED29F763EC3 /* CDVWKProcessPoolFactory.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = CDVWKProcessPoolFactory.h; path = "cordova-plugin-ionic-webview/CDVWKProcessPoolFactory.h"; sourceTree = "<group>"; };
-		553E5234A3214689830F7A50 /* CordovaDnstool.swift */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.swift; name = CordovaDnstool.swift; path = "cordova-plugin-dnstool/CordovaDnstool.swift"; sourceTree = "<group>"; };
 		5831689D202143DCBE2EA0A6 /* CDVViewController+SplashScreen.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = "CDVViewController+SplashScreen.h"; path = "cordova-plugin-splashscreen/CDVViewController+SplashScreen.h"; sourceTree = "<group>"; };
 		5EC24DCA85D14914ADFF6C95 /* CDVNotification.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = CDVNotification.h; path = "cordova-plugin-dialogs/CDVNotification.h"; sourceTree = "<group>"; };
 		5F0A7B0F385042718E7EB315 /* CDVWKInAppBrowserUIDelegate.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = CDVWKInAppBrowserUIDelegate.h; path = "cordova-plugin-inappbrowser/CDVWKInAppBrowserUIDelegate.h"; sourceTree = "<group>"; };
+		5F1762B52694474BB34FC642 /* NetTester.m */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.objc; name = NetTester.m; path = "cordova-plugin-dnstool/NetTester.m"; sourceTree = "<group>"; };
 		633EF3E31FF2AF49009E9EC1 /* DNSCryptAppExt.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = DNSCryptAppExt.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		633EF3E61FF2AF49009E9EC1 /* DNSCryptAppExt.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DNSCryptAppExt.entitlements; sourceTree = "<group>"; };
 		633EF3E71FF2AF49009E9EC1 /* PacketTunnelProvider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PacketTunnelProvider.h; sourceTree = "<group>"; };
@@ -169,13 +170,13 @@
 		6432F50A025244589BF69659 /* CDVInAppBrowserOptions.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = CDVInAppBrowserOptions.h; path = "cordova-plugin-inappbrowser/CDVInAppBrowserOptions.h"; sourceTree = "<group>"; };
 		67FD78F78EA14DA394D48210 /* CDVAssetLibraryFilesystem.m */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.objc; name = CDVAssetLibraryFilesystem.m; path = "cordova-plugin-file/CDVAssetLibraryFilesystem.m"; sourceTree = "<group>"; };
 		6AFF5BF81D6E424B00AB3073 /* CDVLaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = CDVLaunchScreen.storyboard; path = DNSCryptApp/CDVLaunchScreen.storyboard; sourceTree = SOURCE_ROOT; };
-		6B107FF366004BF49A52DA1F /* NetTester.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = NetTester.h; path = "cordova-plugin-dnstool/NetTester.h"; sourceTree = "<group>"; };
 		6F6980CF905445DD96A70D3E /* AudioToolbox.framework */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		78619BB9768244D38BCE06B6 /* CDVNotification.m */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.objc; name = CDVNotification.m; path = "cordova-plugin-dialogs/CDVNotification.m"; sourceTree = "<group>"; };
 		88AB1B05579E45E3A3B22CB8 /* CDVDevice.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = CDVDevice.h; path = "cordova-plugin-device/CDVDevice.h"; sourceTree = "<group>"; };
 		8B1FF70F134A4996BAB0B019 /* CDVInAppBrowserNavigationController.m */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.objc; name = CDVInAppBrowserNavigationController.m; path = "cordova-plugin-inappbrowser/CDVInAppBrowserNavigationController.m"; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* DNSCryptApp-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "DNSCryptApp-Info.plist"; path = "DNSCryptApp/DNSCryptApp-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = SOURCE_ROOT; };
 		8E5D1C3413BB4A51BCD2E2D2 /* CDVInAppBrowser.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = CDVInAppBrowser.h; path = "cordova-plugin-inappbrowser/CDVInAppBrowser.h"; sourceTree = "<group>"; };
+		9149DC86EE2B4298BD3D9293 /* NetTester.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = NetTester.h; path = "cordova-plugin-dnstool/NetTester.h"; sourceTree = "<group>"; };
 		915C16D11B324C7C8BA637E7 /* NativeStorage.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = NativeStorage.h; path = "cordova-plugin-nativestorage/NativeStorage.h"; sourceTree = "<group>"; };
 		97478BC825C2400AA336B18D /* JKLLockScreenPincodeView.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = JKLLockScreenPincodeView.h; path = "cordova-plugin-pinlock/JKLLockScreenPincodeView.h"; sourceTree = "<group>"; };
 		999E98F2519D43F9836F6E32 /* CDVNotification.bundle */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.plug-in"; path = CDVNotification.bundle; sourceTree = "<group>"; };
@@ -190,7 +191,6 @@
 		C217D3E3F8F54E3DA4B06235 /* CDVWKWebViewUIDelegate.m */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.objc; name = CDVWKWebViewUIDelegate.m; path = "cordova-plugin-ionic-webview/CDVWKWebViewUIDelegate.m"; sourceTree = "<group>"; };
 		C3B13522E6054E7A9B471270 /* JKLLockScreenViewController.m */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.objc; name = JKLLockScreenViewController.m; path = "cordova-plugin-pinlock/JKLLockScreenViewController.m"; sourceTree = "<group>"; };
 		C71C435B9960453D920F4079 /* JKLLockScreenNumber.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = JKLLockScreenNumber.h; path = "cordova-plugin-pinlock/JKLLockScreenNumber.h"; sourceTree = "<group>"; };
-		CCD3EC6119C84CEB8132CBDF /* NetTester.m */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.objc; name = NetTester.m; path = "cordova-plugin-dnstool/NetTester.m"; sourceTree = "<group>"; };
 		D0C1671D8E84435BAF2108E1 /* NSString+SSURLEncoding.m */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.objc; name = "NSString+SSURLEncoding.m"; path = "cordova-plugin-x-socialsharing/NSString+SSURLEncoding.m"; sourceTree = "<group>"; };
 		D25E22635A274049BA479ECA /* MessageUI.framework */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		D2B9E3F31C4B4EA7A142491D /* Social.framework */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
@@ -395,9 +395,6 @@
 				0E18CF57468343BDA772B6C7 /* SocialSharing.h */,
 				3E636B98DE5C4D539563F973 /* AppPreferences.m */,
 				03382239A1C74E8C86876D21 /* AppPreferences.h */,
-				CCD3EC6119C84CEB8132CBDF /* NetTester.m */,
-				553E5234A3214689830F7A50 /* CordovaDnstool.swift */,
-				6B107FF366004BF49A52DA1F /* NetTester.h */,
 				D2FBA05D09F44DAA987AC810 /* CordovaPinlock.swift */,
 				EB51BE8944BB40D8AC37FB33 /* JKLLockScreenNumber.m */,
 				02AA023E6D5244CEAA1DD9DC /* JKLLockScreenPincodeView.m */,
@@ -405,6 +402,9 @@
 				C71C435B9960453D920F4079 /* JKLLockScreenNumber.h */,
 				97478BC825C2400AA336B18D /* JKLLockScreenPincodeView.h */,
 				3FDC72340C1540D6BBDA0518 /* JKLLockScreenViewController.h */,
+				5F1762B52694474BB34FC642 /* NetTester.m */,
+				32A2F491ACB94EDC8EA06B32 /* CordovaDnstool.swift */,
+				9149DC86EE2B4298BD3D9293 /* NetTester.h */,
 			);
 			name = Plugins;
 			path = DNSCryptApp/Plugins;
@@ -646,12 +646,12 @@
 				5F06A85C77F54C68844697DA /* NSString+SSURLEncoding.m in Sources */,
 				E7DF9B136B17495EAD1E9DC4 /* SocialSharing.m in Sources */,
 				826057D27E4645518690FAC5 /* AppPreferences.m in Sources */,
-				08C3C29804DD4A9F886A23D4 /* NetTester.m in Sources */,
-				296FD9EB3D474C1899615548 /* CordovaDnstool.swift in Sources */,
 				A7B44292AF0F45F186EF39EE /* CordovaPinlock.swift in Sources */,
 				C43609FBFD5F4EA4948C6362 /* JKLLockScreenNumber.m in Sources */,
 				36E32200A4114B19A978EBE4 /* JKLLockScreenPincodeView.m in Sources */,
 				FD96086452E047A7AD536697 /* JKLLockScreenViewController.m in Sources */,
+				489222BDBCEC4D0C89C3FBC6 /* NetTester.m in Sources */,
+				CE5A4253FB864E3FBE6FDB46 /* CordovaDnstool.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -661,7 +661,7 @@
 			files = (
 				633EF4071FF2B232009E9EC1 /* DNSCryptThread.m in Sources */,
 				635E7BB3204998C60037AD6C /* Migrator.m in Sources */,
-				63D63F25224E3D3F00220379 /* NetTester.m in Sources */,
+				63308BCF237B21C000216C64 /* NetTester.m in Sources */,
 				633EF3E91FF2AF49009E9EC1 /* PacketTunnelProvider.m in Sources */,
 				636411292080B1FE00C15146 /* Reachability.m in Sources */,
 			);
@@ -695,7 +695,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 0.3.0;
+				CURRENT_PROJECT_VERSION = 0.5.0;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -734,7 +734,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 0.3.0;
+				CURRENT_PROJECT_VERSION = 0.5.0;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -783,7 +783,7 @@
 				CODE_SIGN_ENTITLEMENTS = DNSCryptApp/Resources/DNSCryptApp.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 0.3.0;
+				CURRENT_PROJECT_VERSION = 0.5.0;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = "";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -843,7 +843,7 @@
 				CODE_SIGN_ENTITLEMENTS = DNSCryptApp/Resources/DNSCryptApp.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 0.3.0;
+				CURRENT_PROJECT_VERSION = 0.5.0;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = "";
 				ENABLE_NS_ASSERTIONS = NO;

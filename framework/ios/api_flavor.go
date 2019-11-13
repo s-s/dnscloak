@@ -1,5 +1,5 @@
 /* Copyright (C) 2019 Sergey Smirnov
- * 
+ *
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at https://mozilla.org/MPL/2.0/. */
@@ -12,10 +12,10 @@ import (
 	dnscrypt "github.com/jedisct1/dnscrypt-proxy/dnscrypt-proxy"
 )
 
-func PrefetchSourceURLCloak(timeout_int int, useIPv4 bool, useIPv6 bool, fallbackResolver string, ignoreSystemDNS bool, url string, cacheFile string) error {
+func PrefetchSourceURLCloak(timeout_int int, useIPv4 bool, useIPv6 bool, fallbackResolver string, ignoreSystemDNS bool, url string, cacheFile string, minisignKey string) error {
 	xTransport := dnscrypt.NewXTransport()
 	xTransport.SetupXTransportCloak(useIPv4, useIPv6, fallbackResolver, ignoreSystemDNS)
-	return dnscrypt.PrefetchSourceURLCloak(xTransport, url, cacheFile)
+	return dnscrypt.PrefetchSourceURLCloak(xTransport, url, cacheFile, minisignKey)
 }
 
 func RefreshServersInfoCloak(app *App) {

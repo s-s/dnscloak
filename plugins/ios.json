@@ -43,10 +43,10 @@
     "cordova-plugin-app-preferences": {
       "PACKAGE_NAME": "org.techcultivation.dnscloak"
     },
-    "cordova-plugin-dnstool": {
+    "cordova-plugin-pinlock": {
       "PACKAGE_NAME": "org.techcultivation.dnscloak"
     },
-    "cordova-plugin-pinlock": {
+    "cordova-plugin-dnstool": {
       "PACKAGE_NAME": "org.techcultivation.dnscloak"
     }
   },

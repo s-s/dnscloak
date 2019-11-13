@@ -188,8 +188,12 @@ var helpersSources = {
         var listsToFetch = [];
 
         _each(sources, function (v) {
-          if (v.url && v.cache_file) {
-            listsToFetch.push('' + v.url + '|' + v.cache_file);
+          if (v.url && v.cache_file && v.minisign_key) {
+            listsToFetch.push('' + v.url + '|' + v.cache_file + '|' + v.minisign_key);
+          } else if (_isArray(v.urls) && v.cache_file && v.minisign_key) {
+            _each(v.urls, function(url) {
+              listsToFetch.push('' + url + '|' + v.cache_file + '|' + v.minisign_key);
+            });
           }
         });
 
@@ -215,10 +219,16 @@ var helpersSources = {
 
         _each(sources, function (v) {
           listPromises.push(new Promise(function (resolveEx) {
-            if (v.url && v.cache_file) {
+            if ((v.url || _isArray(v.urls)) && v.cache_file && v.minisign_key) {
               dnstool.fileExists(v.cache_file, function (exists) {
                 if (!exists) {
-                  listsToFetch.push('' + v.url + '|' + v.cache_file);
+                  if (v.url) {
+                    listsToFetch.push('' + v.url + '|' + v.cache_file + '|' + v.minisign_key);
+                  } else if (_isArray(v.urls)) {
+                    _each(v.urls, function (url) {
+                      listsToFetch.push('' + url + '|' + v.cache_file + '|' + v.minisign_key);
+                    });
+                  }
                 }
                 resolveEx();
               }, resolveEx);

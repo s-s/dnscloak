@@ -307,19 +307,19 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
       ]
     },
     {
-      "id": "cordova-plugin-dnstool.CordovaDnstool",
-      "file": "plugins/cordova-plugin-dnstool/www/CordovaDnstool.js",
-      "pluginId": "cordova-plugin-dnstool",
-      "clobbers": [
-        "dnstool"
-      ]
-    },
-    {
       "id": "cordova-plugin-pinlock.CordovaPinlock",
       "file": "plugins/cordova-plugin-pinlock/www/CordovaPinlock.js",
       "pluginId": "cordova-plugin-pinlock",
       "clobbers": [
         "pinlock"
+      ]
+    },
+    {
+      "id": "cordova-plugin-dnstool.CordovaDnstool",
+      "file": "plugins/cordova-plugin-dnstool/www/CordovaDnstool.js",
+      "pluginId": "cordova-plugin-dnstool",
+      "clobbers": [
+        "dnstool"
       ]
     }
   ];
@@ -339,7 +339,7 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
     "es6-promise-plugin": "4.2.2",
     "cordova-plugin-x-socialsharing": "5.4.4",
     "cordova-plugin-app-preferences": "0.99.3",
-    "cordova-plugin-dnstool": "0.0.1",
-    "cordova-plugin-pinlock": "0.0.1"
+    "cordova-plugin-pinlock": "0.0.1",
+    "cordova-plugin-dnstool": "0.0.2"
   };
 });

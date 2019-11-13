@@ -57,8 +57,8 @@
       "cordova-plugin-statusbar": {},
       "cordova-plugin-x-socialsharing": {},
       "cordova-plugin-app-preferences": {},
-      "cordova-plugin-dnstool": {},
-      "cordova-plugin-pinlock": {}
+      "cordova-plugin-pinlock": {},
+      "cordova-plugin-dnstool": {}
     },
     "platforms": [
       "ios"

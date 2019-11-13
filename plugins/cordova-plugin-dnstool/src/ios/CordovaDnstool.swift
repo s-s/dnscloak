@@ -45,7 +45,7 @@ import Dnscryptproxy
         
         lists.forEach { list in
             let url_cache = list.components(separatedBy: "|")
-            DnscryptproxyPrefetchSourceURLCloak(30, hasIPv4, hasIPv6, defaultResolver, ignoreSystemDNS, url_cache[0], url_cache[1], nil)
+            DnscryptproxyPrefetchSourceURLCloak(30, hasIPv4, hasIPv6, defaultResolver, ignoreSystemDNS, url_cache[0], url_cache[1], url_cache[2], nil)
         }
         
         self.commandDelegate!.send(

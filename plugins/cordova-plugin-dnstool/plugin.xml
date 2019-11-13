@@ -3,7 +3,7 @@
 <plugin
   xmlns="http://apache.org/cordova/ns/plugins/1.0"
   id="cordova-plugin-dnstool"
-  version="0.0.1">
+  version="0.0.2">
   <name>DNSCloak helper plugin</name>
   <description>Cordova NEVPNManager API</description>
   <author>Sergey Smirnov</author>
