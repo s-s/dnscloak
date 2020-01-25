@@ -55,8 +55,8 @@ func (plugin *PluginWhitelistName) Init(proxy *dnscrypt.Proxy) error {
 	scanner := bufio.NewScanner(file)
 	for scanner.Scan() {
 		line := scanner.Text()
-		line = strings.TrimFunc(line, unicode.IsSpace)
-		if len(line) == 0 || strings.HasPrefix(line, "#") {
+		line = dnscrypt.TrimAndStripInlineComments(line)
+		if len(line) == 0 {
 			continue
 		}
 		parts := strings.Split(line, "@")
@@ -77,28 +77,10 @@ func (plugin *PluginWhitelistName) Init(proxy *dnscrypt.Proxy) error {
 				weeklyRanges = &weeklyRangesX
 			}
 		}
-
-		//DNSCloak
-		/*leadingStar := strings.HasPrefix(line, "*")
-		trailingStar := strings.HasSuffix(line, "*")
-		exact := strings.HasPrefix(line, "=")
-		shouldAdd := false
-		if isGlobCandidate(line) {
-			shouldAdd = true
-		} else if leadingStar && trailingStar {
-			shouldAdd = true
-		} else if exact {
-			shouldAdd = true
-		}*/
-		//DNSCloak
-
-		//if shouldAdd {
-		if _, err := plugin.patternMatcher.Add(line, weeklyRanges, lineNo+1); err != nil {
+		if err := plugin.patternMatcher.Add(line, weeklyRanges, lineNo+1); err != nil {
 			dlog.Error(err)
 			continue
 		}
-		//}
-
 		lineNo++
 	}
 	if len(proxy.GetWhitelistNameLogFile()) == 0 {
@@ -119,11 +101,7 @@ func (plugin *PluginWhitelistName) Reload() error {
 }
 
 func (plugin *PluginWhitelistName) Eval(pluginsState *dnscrypt.PluginsState, msg *dns.Msg) error {
-	questions := msg.Question
-	if len(questions) != 1 {
-		return nil
-	}
-	qName := strings.ToLower(dnscrypt.StripTrailingDot(questions[0].Name))
+	qName := pluginsState.GetQName()
 	whitelist, reason, xweeklyRanges := plugin.patternMatcher.Eval(qName)
 	var weeklyRanges *dnscrypt.WeeklyRanges
 	if xweeklyRanges != nil {
@@ -166,7 +144,7 @@ func (plugin *PluginWhitelistName) Eval(pluginsState *dnscrypt.PluginsState, msg
 			if plugin.logger == nil {
 				return errors.New("Log file not initialized")
 			}
-			plugin.logger.Write([]byte(line))
+			_, _ = plugin.logger.Write([]byte(line))
 		}
 	}
 	return nil

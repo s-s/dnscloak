@@ -59,7 +59,7 @@ func NewPatternPatcherMmap(path string) *PatternMatcherMmap {
 	return &patternMatcher
 }
 
-func (patternMatcher *PatternMatcherMmap) Add(pattern string, val interface{}, position int) (dnscrypt.PatternType, error) {
+func (patternMatcher *PatternMatcherMmap) Add(pattern string, val interface{}, position int) error {
 	leadingStar := strings.HasPrefix(pattern, "*")
 	trailingStar := strings.HasSuffix(pattern, "*")
 	exact := strings.HasPrefix(pattern, "=")
@@ -68,24 +68,24 @@ func (patternMatcher *PatternMatcherMmap) Add(pattern string, val interface{}, p
 		patternType = dnscrypt.PatternTypePattern
 		_, err := filepath.Match(pattern, "example.com")
 		if len(pattern) < 2 || err != nil {
-			return patternType, fmt.Errorf("Syntax error in block rules at pattern %d", position)
+			return fmt.Errorf("Syntax error in block rules at pattern %d", position)
 		}
 	} else if leadingStar && trailingStar {
 		patternType = dnscrypt.PatternTypeSubstring
 		if len(pattern) < 3 {
-			return patternType, fmt.Errorf("Syntax error in block rules at pattern %d", position)
+			return fmt.Errorf("Syntax error in block rules at pattern %d", position)
 		}
 		pattern = pattern[1 : len(pattern)-1]
 	} else if trailingStar {
 		patternType = dnscrypt.PatternTypePrefix
 		if len(pattern) < 2 {
-			return patternType, fmt.Errorf("Syntax error in block rules at pattern %d", position)
+			return fmt.Errorf("Syntax error in block rules at pattern %d", position)
 		}
 		pattern = pattern[:len(pattern)-1]
 	} else if exact {
 		patternType = dnscrypt.PatternTypeExact
 		if len(pattern) < 2 {
-			return patternType, fmt.Errorf("Syntax error in block rules at pattern %d", position)
+			return fmt.Errorf("Syntax error in block rules at pattern %d", position)
 		}
 		pattern = pattern[1:]
 	} else {
@@ -120,7 +120,7 @@ func (patternMatcher *PatternMatcherMmap) Add(pattern string, val interface{}, p
 	default:
 		dlog.Fatal("Unexpected block type")
 	}
-	return patternType, nil
+	return nil
 }
 
 func (patternMatcher *PatternMatcherMmap) Eval(qName string) (reject bool, reason string, val interface{}) {
@@ -130,7 +130,7 @@ func (patternMatcher *PatternMatcherMmap) Eval(qName string) (reject bool, reaso
 
 	revQname := dnscrypt.StringReverse(qName)
 	if match, xval, found := patternMatcher.blockedSuffixes.LongestPrefix([]byte(revQname)); found {
-		if len(match) == len(qName) || revQname[len(match)] == '.' {
+		if len(match) == len(revQname) || revQname[len(match)] == '.' {
 			if len(xval) > 0 {
 				//dlog.Warnf("[1] match[%s] qName[%s]", string(match), qName)
 				return true, "*." + dnscrypt.StringReverse(string(match)), string(xval)

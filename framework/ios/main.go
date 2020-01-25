@@ -56,7 +56,7 @@ func Main(configFile string) *App {
 	flags := dnscrypt.ConfigFlags{}
 	flags.List = &falsie
 	flags.ListAll = &falsie
-	flags.JsonOutput = &falsie
+	flags.JSONOutput = &falsie
 	flags.Check = &falsie
 	flags.ConfigFile = &configFile
 	flags.Child = &falsie

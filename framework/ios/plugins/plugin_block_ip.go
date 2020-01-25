@@ -14,7 +14,6 @@ import (
 	"os"
 	"strings"
 	"time"
-	"unicode"
 
 	"github.com/jedisct1/dlog"
 	"github.com/miekg/dns"
@@ -58,8 +57,9 @@ func (plugin *PluginBlockIP) Init(proxy *dnscrypt.Proxy) error {
 	scanner := bufio.NewScanner(file)
 
 	for scanner.Scan() {
-		line := strings.TrimFunc(scanner.Text(), unicode.IsSpace)
-		if len(line) == 0 || strings.HasPrefix(line, "#") {
+		line := scanner.Text()
+		line = dnscrypt.TrimAndStripInlineComments(line)
+		if len(line) == 0 {
 			continue
 		}
 		ip := net.ParseIP(line)
@@ -144,14 +144,7 @@ func (plugin *PluginBlockIP) Eval(pluginsState *dnscrypt.PluginsState, msg *dns.
 		pluginsState.SetAction(dnscrypt.PluginsActionReject)
 		pluginsState.SetReturnCode(dnscrypt.PluginsReturnCodeReject)
 		if plugin.logger != nil {
-			questions := msg.Question
-			if len(questions) != 1 {
-				return nil
-			}
-			qName := strings.ToLower(dnscrypt.StripTrailingDot(questions[0].Name))
-			if len(qName) < 2 {
-				return nil
-			}
+			qName := pluginsState.GetQName()
 			var clientIPStr string
 			if pluginsState.GetClientProto() == "udp" {
 				clientIPStr = (*pluginsState.GetClientAddr()).(*net.UDPAddr).IP.String()
@@ -173,7 +166,7 @@ func (plugin *PluginBlockIP) Eval(pluginsState *dnscrypt.PluginsState, msg *dns.
 			if plugin.logger == nil {
 				return errors.New("Log file not initialized")
 			}
-			plugin.logger.Write([]byte(line))
+			_, _ = plugin.logger.Write([]byte(line))
 		}
 	}
 	return nil

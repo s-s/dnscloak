@@ -24,11 +24,74 @@ import (
 	dnscrypt "github.com/jedisct1/dnscrypt-proxy/dnscrypt-proxy"
 )
 
-type PluginBlockName struct {
+type BlockedNames struct {
 	allWeeklyRanges *map[string]dnscrypt.WeeklyRanges
 	patternMatcher  *PatternMatcherMmap
 	logger          *lumberjack.Logger
 	format          string
+}
+
+const aliasesLimit = 8
+
+var blockedNames *BlockedNames
+
+func (blockedNames *BlockedNames) check(pluginsState *dnscrypt.PluginsState, qName string, aliasFor *string) (bool, error) {
+	reject, reason, xweeklyRanges := blockedNames.patternMatcher.Eval(qName)
+	if aliasFor != nil {
+		reason = reason + " (alias for [" + *aliasFor + "])"
+	}
+	var weeklyRanges *dnscrypt.WeeklyRanges
+	if xweeklyRanges != nil {
+		switch v := xweeklyRanges.(type) {
+		case string:
+			if len(v) > 0 && v != "-" {
+				weeklyRangesX := (*blockedNames.allWeeklyRanges)[v]
+				weeklyRanges = &weeklyRangesX
+			}
+		default:
+			weeklyRanges = xweeklyRanges.(*dnscrypt.WeeklyRanges)
+		}
+	}
+	if reject {
+		if weeklyRanges != nil && !weeklyRanges.Match() {
+			reject = false
+		}
+	}
+	if !reject {
+		return false, nil
+	}
+	pluginsState.SetAction(dnscrypt.PluginsActionReject)
+	pluginsState.SetReturnCode(dnscrypt.PluginsReturnCodeReject)
+	if blockedNames.logger != nil {
+		var clientIPStr string
+		if pluginsState.GetClientProto() == "udp" {
+			clientIPStr = (*pluginsState.GetClientAddr()).(*net.UDPAddr).IP.String()
+		} else {
+			clientIPStr = (*pluginsState.GetClientAddr()).(*net.TCPAddr).IP.String()
+		}
+		var line string
+		if blockedNames.format == "tsv" {
+			now := time.Now()
+			year, month, day := now.Date()
+			hour, minute, second := now.Clock()
+			tsStr := fmt.Sprintf("[%d-%02d-%02d %02d:%02d:%02d]", year, int(month), day, hour, minute, second)
+			line = fmt.Sprintf("%s\t%s\t%s\t%s\n", tsStr, clientIPStr, dnscrypt.StringQuote(qName), dnscrypt.StringQuote(reason))
+		} else if blockedNames.format == "ltsv" {
+			line = fmt.Sprintf("time:%d\thost:%s\tqname:%s\tmessage:%s\n", time.Now().Unix(), clientIPStr, dnscrypt.StringQuote(qName), dnscrypt.StringQuote(reason))
+		} else {
+			dlog.Fatalf("Unexpected log format: [%s]", blockedNames.format)
+		}
+		if blockedNames.logger == nil {
+			return false, errors.New("Log file not initialized")
+		}
+		_, _ = blockedNames.logger.Write([]byte(line))
+	}
+	return true, nil
+}
+
+// ---
+
+type PluginBlockName struct {
 }
 
 func (plugin *PluginBlockName) Name() string {
@@ -49,15 +112,17 @@ func (plugin *PluginBlockName) Init(proxy *dnscrypt.Proxy) error {
 	}
 	defer file.Close()
 
-	plugin.allWeeklyRanges = proxy.GetAllWeeklyRanges()
-	plugin.patternMatcher = NewPatternPatcherMmap(fileName)
+	xBlockedNames := BlockedNames{
+		allWeeklyRanges: proxy.GetAllWeeklyRanges(),
+		patternMatcher:  NewPatternPatcherMmap(fileName),
+	}
 
 	lineNo := 0
 	scanner := bufio.NewScanner(file)
 	for scanner.Scan() {
 		line := scanner.Text()
-		line = strings.TrimFunc(line, unicode.IsSpace)
-		if len(line) == 0 || strings.HasPrefix(line, "#") {
+		line = dnscrypt.TrimAndStripInlineComments(line)
+		if len(line) == 0 {
 			continue
 		}
 		parts := strings.Split(line, "@")
@@ -71,7 +136,7 @@ func (plugin *PluginBlockName) Init(proxy *dnscrypt.Proxy) error {
 		}
 		var weeklyRanges *dnscrypt.WeeklyRanges
 		if len(timeRangeName) > 0 {
-			weeklyRangesX, ok := (*plugin.allWeeklyRanges)[timeRangeName]
+			weeklyRangesX, ok := (*xBlockedNames.allWeeklyRanges)[timeRangeName]
 			if !ok {
 				dlog.Errorf("Time range [%s] not found at line %d", timeRangeName, 1+lineNo)
 			} else {
@@ -79,33 +144,19 @@ func (plugin *PluginBlockName) Init(proxy *dnscrypt.Proxy) error {
 			}
 		}
 
-		//DNSCloak
-		/*leadingStar := strings.HasPrefix(line, "*")
-		trailingStar := strings.HasSuffix(line, "*")
-		exact := strings.HasPrefix(line, "=")
-		shouldAdd := false
-		if isGlobCandidate(line) {
-			shouldAdd = true
-		} else if leadingStar && trailingStar {
-			shouldAdd = true
-		} else if exact {
-			shouldAdd = true
-		}*/
-		//DNSCloak
-
-		//if shouldAdd {
-		if _, err := plugin.patternMatcher.Add(line, weeklyRanges, lineNo+1); err != nil {
+		if err := xBlockedNames.patternMatcher.Add(line, weeklyRanges, lineNo+1); err != nil {
 			dlog.Error(err)
 			continue
 		}
-		//}
+
 		lineNo++
 	}
+	blockedNames = &xBlockedNames
 	if len(proxy.GetBlockNameLogFile()) == 0 {
 		return nil
 	}
-	plugin.logger = &lumberjack.Logger{LocalTime: true, MaxSize: proxy.GetLogMaxSize(), MaxAge: proxy.GetLogMaxAge(), MaxBackups: proxy.GetLogMaxBackups(), Filename: proxy.GetBlockNameLogFile(), Compress: true}
-	plugin.format = proxy.GetBlockNameFormat()
+	blockedNames.logger = &lumberjack.Logger{LocalTime: true, MaxSize: proxy.GetLogMaxSize(), MaxAge: proxy.GetLogMaxAge(), MaxBackups: proxy.GetLogMaxBackups(), Filename: proxy.GetBlockNameLogFile(), Compress: true}
+	blockedNames.format = proxy.GetBlockNameFormat()
 
 	return nil
 }
@@ -119,58 +170,60 @@ func (plugin *PluginBlockName) Reload() error {
 }
 
 func (plugin *PluginBlockName) Eval(pluginsState *dnscrypt.PluginsState, msg *dns.Msg) error {
-	if pluginsState.GetSessionDataKey("whitelisted") != nil {
+	if blockedNames == nil || pluginsState.GetSessionDataKey("whitelisted") != nil {
 		return nil
 	}
-	questions := msg.Question
-	if len(questions) != 1 {
+	_, err := blockedNames.check(pluginsState, pluginsState.GetQName(), nil)
+	return err
+}
+
+// ---
+
+type PluginBlockNameResponse struct {
+}
+
+func (plugin *PluginBlockNameResponse) Name() string {
+	return "block_name"
+}
+
+func (plugin *PluginBlockNameResponse) Description() string {
+	return "Block DNS responses matching name patterns"
+}
+
+func (plugin *PluginBlockNameResponse) Init(proxy *dnscrypt.Proxy) error {
+	return nil
+}
+
+func (plugin *PluginBlockNameResponse) Drop() error {
+	return nil
+}
+
+func (plugin *PluginBlockNameResponse) Reload() error {
+	return nil
+}
+
+func (plugin *PluginBlockNameResponse) Eval(pluginsState *dnscrypt.PluginsState, msg *dns.Msg) error {
+	if blockedNames == nil || pluginsState.GetSessionDataKey("whitelisted") != nil {
 		return nil
 	}
-	qName := strings.ToLower(dnscrypt.StripTrailingDot(questions[0].Name))
-	reject, reason, xweeklyRanges := plugin.patternMatcher.Eval(qName)
-	var weeklyRanges *dnscrypt.WeeklyRanges
-	if xweeklyRanges != nil {
-		switch v := xweeklyRanges.(type) {
-		case string:
-			if len(v) > 0 && v != "-" {
-				weeklyRangesX := (*plugin.allWeeklyRanges)[v]
-				weeklyRanges = &weeklyRangesX
-			}
-		default:
-			weeklyRanges = xweeklyRanges.(*dnscrypt.WeeklyRanges)
+	aliasFor := pluginsState.GetQName()
+	aliasesLeft := aliasesLimit
+	answers := msg.Answer
+	for _, answer := range answers {
+		header := answer.Header()
+		if header.Class != dns.ClassINET || header.Rrtype != dns.TypeCNAME {
+			continue
 		}
-	}
-	if reject {
-		if weeklyRanges != nil && !weeklyRanges.Match() {
-			reject = false
+		target, err := dnscrypt.NormalizeQName(answer.(*dns.CNAME).Target)
+		if err != nil {
+			return err
 		}
-	}
-	if reject {
-		pluginsState.SetAction(dnscrypt.PluginsActionReject)
-		pluginsState.SetReturnCode(dnscrypt.PluginsReturnCodeReject)
-		if plugin.logger != nil {
-			var clientIPStr string
-			if pluginsState.GetClientProto() == "udp" {
-				clientIPStr = (*pluginsState.GetClientAddr()).(*net.UDPAddr).IP.String()
-			} else {
-				clientIPStr = (*pluginsState.GetClientAddr()).(*net.TCPAddr).IP.String()
-			}
-			var line string
-			if plugin.format == "tsv" {
-				now := time.Now()
-				year, month, day := now.Date()
-				hour, minute, second := now.Clock()
-				tsStr := fmt.Sprintf("[%d-%02d-%02d %02d:%02d:%02d]", year, int(month), day, hour, minute, second)
-				line = fmt.Sprintf("%s\t%s\t%s\t%s\n", tsStr, clientIPStr, dnscrypt.StringQuote(qName), dnscrypt.StringQuote(reason))
-			} else if plugin.format == "ltsv" {
-				line = fmt.Sprintf("time:%d\thost:%s\tqname:%s\tmessage:%s\n", time.Now().Unix(), clientIPStr, dnscrypt.StringQuote(qName), dnscrypt.StringQuote(reason))
-			} else {
-				dlog.Fatalf("Unexpected log format: [%s]", plugin.format)
-			}
-			if plugin.logger == nil {
-				return errors.New("Log file not initialized")
-			}
-			plugin.logger.Write([]byte(line))
+		if blocked, err := blockedNames.check(pluginsState, target, &aliasFor); blocked || err != nil {
+			return err
+		}
+		aliasesLeft--
+		if aliasesLeft == 0 {
+			break
 		}
 	}
 	return nil

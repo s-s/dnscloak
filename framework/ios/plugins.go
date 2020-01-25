@@ -13,9 +13,13 @@ import (
 
 func initPluginsGlobals(pluginsGlobals *dnscrypt.PluginsGlobals, proxy *dnscrypt.Proxy) error {
 	queryPlugins := &[]dnscrypt.Plugin{}
+	if len(proxy.GetQueryMeta()) != 0 {
+		*queryPlugins = append(*queryPlugins, dnscrypt.Plugin(new(dnscrypt.PluginQueryMeta)))
+	}
 	if len(proxy.GetWhitelistNameFile()) != 0 {
 		*queryPlugins = append(*queryPlugins, dnscrypt.Plugin(new(plugins.PluginWhitelistName)))
 	}
+	*queryPlugins = append(*queryPlugins, dnscrypt.Plugin(new(dnscrypt.PluginFirefox)))
 	if len(proxy.GetBlockNameFile()) != 0 {
 		*queryPlugins = append(*queryPlugins, dnscrypt.Plugin(new(plugins.PluginBlockName)))
 	}
@@ -32,10 +36,19 @@ func initPluginsGlobals(pluginsGlobals *dnscrypt.PluginsGlobals, proxy *dnscrypt
 	if len(proxy.GetForwardFile()) != 0 {
 		*queryPlugins = append(*queryPlugins, dnscrypt.Plugin(new(dnscrypt.PluginForward)))
 	}
+	if proxy.GetPluginBlockUnqualified() {
+		*queryPlugins = append(*queryPlugins, dnscrypt.Plugin(new(dnscrypt.PluginBlockUnqualified)))
+	}
+	if proxy.GetPluginBlockUndelegated() {
+		*queryPlugins = append(*queryPlugins, dnscrypt.Plugin(new(dnscrypt.PluginBlockUndelegated)))
+	}
 
 	responsePlugins := &[]dnscrypt.Plugin{}
 	if len(proxy.GetNXLogFile()) != 0 {
 		*responsePlugins = append(*responsePlugins, dnscrypt.Plugin(new(dnscrypt.PluginNxLog)))
+	}
+	if len(proxy.GetBlockNameFile()) != 0 {
+		*responsePlugins = append(*responsePlugins, dnscrypt.Plugin(new(plugins.PluginBlockNameResponse)))
 	}
 	if len(proxy.GetBlockIPFile()) != 0 {
 		*responsePlugins = append(*responsePlugins, dnscrypt.Plugin(new(plugins.PluginBlockIP)))
