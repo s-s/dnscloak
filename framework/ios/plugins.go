@@ -20,6 +20,9 @@ func initPluginsGlobals(pluginsGlobals *dnscrypt.PluginsGlobals, proxy *dnscrypt
 		*queryPlugins = append(*queryPlugins, dnscrypt.Plugin(new(plugins.PluginWhitelistName)))
 	}
 	*queryPlugins = append(*queryPlugins, dnscrypt.Plugin(new(dnscrypt.PluginFirefox)))
+	if len(proxy.GetEdnsClientSubnets()) != 0 {
+		*queryPlugins = append(*queryPlugins, dnscrypt.Plugin(new(dnscrypt.PluginECS)))
+	}
 	if len(proxy.GetBlockNameFile()) != 0 {
 		*queryPlugins = append(*queryPlugins, dnscrypt.Plugin(new(plugins.PluginBlockName)))
 	}
@@ -52,6 +55,9 @@ func initPluginsGlobals(pluginsGlobals *dnscrypt.PluginsGlobals, proxy *dnscrypt
 	}
 	if len(proxy.GetBlockIPFile()) != 0 {
 		*responsePlugins = append(*responsePlugins, dnscrypt.Plugin(new(plugins.PluginBlockIP)))
+	}
+	if len(proxy.GetDns64Resolvers()) != 0 || len(proxy.GetDns64Prefixes()) != 0 {
+		*responsePlugins = append(*responsePlugins, dnscrypt.Plugin(new(dnscrypt.PluginDNS64)))
 	}
 	if proxy.GetCache() {
 		*responsePlugins = append(*responsePlugins, dnscrypt.Plugin(new(dnscrypt.PluginCacheResponse)))
